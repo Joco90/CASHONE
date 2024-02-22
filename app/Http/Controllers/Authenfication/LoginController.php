@@ -12,7 +12,7 @@ use App\Models\Profile;
 use App\Mail\EnvoiPassword;
 use App\Http\Controllers\Default_Func\UserController;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
 
 class LoginController extends Controller
 {
@@ -26,12 +26,12 @@ class LoginController extends Controller
 
         if ($_profil==0) {
             $defaulte_func->profile_Default();
-            $default_passw=$defaulte_func->password_default();
+            $default_passw="Menta@2020";
             $profil=Profile::latest()->first();
-            $defaulte_func->create_Default_User($profil->ID,$default_passw);
+            $defaulte_func->create_Default_User($profil->id,$default_passw);
             $users=User::latest()->first();
             // envoie de mail
-            Mail::to($users->EMAIL)->send(new EnvoiPassword($users->NOM,$users->EMAIL,$default_passw));
+            Mail::to($users->email)->send(new EnvoiPassword($users->name,$users->email,$default_passw));
         }
 
         $_title="Connexion Cashone";
@@ -56,10 +56,10 @@ class LoginController extends Controller
             return redirect('/')->withErrors($validate);
         }
 
-        $user=User::Where('EMAIL',$request->email)->first();
+        $user=User::Where('email',$request->email)->first();
         if ($user) {
-            if ($user->PSWD==null) {
-                if (Hash::check($request->get('password'), $user->PSW_IS_DEFAULT)) {
+            if ($user->password==null) {
+                if (Hash::check($request->get('password'), $user->default_password)) {
                     Auth::guard()->login($user);
                     $request->session()->regenerate();
                     return redirect('Auth/change-password');
@@ -68,9 +68,9 @@ class LoginController extends Controller
                 withErrors("Le mot de passe par defaut est incorrect.");
 
             }else{
-                if (Hash::check($request->get('password'), $user->PSWD)) {
+                if (Hash::check($request->get('password'), $user->password)) {
                     Auth::guard()->login($user);
-                    return redirect('Dashboard/panel');
+                    return redirect('dashboard/panel');
                 }else return redirect()->back()->withErrors("Le mot de passe est incorrect.");
 
             }

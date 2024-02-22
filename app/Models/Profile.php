@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     use HasFactory;
-    protected $table='PROFILE';
+    protected $table='profile';
 
     protected $fillable = [
-        'ID','CODE','LIBELLE','TYPE','AUTEUR','STATUT',
+        'id','code','libelle','type','auteur','statut',
     ];
 }

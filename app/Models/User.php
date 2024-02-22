@@ -12,20 +12,16 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table='UTILISATEUR';
+    protected $table='utilisateur';
 
     protected $fillable = [
-        'ID','CODE','NOM','PRENOMS',
-        'PROFILE','EMAIL','TELEPHONE','MOBILE',
-        'PSWD','DATE_PSWD','PSW_IS_DEFAULT',
-        'PHOTO','MATRI','STATUT','DEBUT_ACTIV','FIN_ACTIV',
-        'BLOC','DATE_BLOC','HEURE_BLOC','MOTIF_BLOC',
-        'INITIAL','SIGN','IS_ADMIN',
-        'IDJADE','AUTEUR',
+        'id','code','name','firstname',
+        'profile','email','telephone','mobile',
+        'password','date_password','default_password',
+        'photo','matri','statut','debut_activ','fin_activ',
+        'bloc','date_bloc','heure_bloc','motif_bloc',
+        'initial','sign','is_admin',
+        'idjade','auteur',
     ];
 
-    public function codeUtil()
-    {
-        return 'codeUtil';
-    }
 }

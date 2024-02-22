@@ -17,9 +17,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('Auth.login');
 // });
 
-Route::get('/','App\Http\Controllers\Authenfication\LoginController@index')->name('login');
+
 
 Route::prefix('Auth')->group(function () {
+    Route::get('/login','App\Http\Controllers\Authenfication\LoginController@index')->name('Auth.login');
     Route::post('/authentification','App\Http\Controllers\Authenfication\LoginController@login')->name('Auth.connexion');
     Route::get('/forget-password','App\Http\Controllers\Authenfication\ForgetPasswordController@index')->name('Auth.forget');
 });
@@ -27,9 +28,10 @@ Route::prefix('Auth')->group(function () {
 Route::group(['middleware' => 'auth'], function (){
     Route::prefix('Auth')->group(function () {
     Route::get('/change-password','App\Http\Controllers\Authenfication\ChangePasswordController@index')->name('Auth.changepsw');
+    Route::post('/change-password','App\Http\Controllers\Authenfication\ChangePasswordController@_updatePassword')->name('Auth.update_Password');
     });
 
-    Route::prefix('Dashboard')->group(function () {
+    Route::prefix('dashboard')->group(function () {
     Route::get('/panel','App\Http\Controllers\Dashboard\DashboardController@index')->name('panel');
 
     });

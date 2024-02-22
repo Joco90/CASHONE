@@ -3,6 +3,7 @@
 @section('content-login')
     <div class="modal-dialog w-100 mx-auto">
         <div class="modal-content">
+            @include('Partials._alerte')
             <div class="modal-body">
                 <div class="h5 modal-title text-center">
                     <h1 style="font-weight: 800">Connexion Cashone</h1>
@@ -11,7 +12,7 @@
                            Voulez-vous changer votre mot de passe?</span>
                     </h4>
                 </div>
-                <form class="login-form" id="loginForm" method="POST" action="">
+                <form class="login-form" id="loginForm" method="POST" action="{{route('Auth.update_Password')}}">
                     <div class="">
                         @csrf
                         <div class="col-md-12">
@@ -24,14 +25,14 @@
                         <div class="col-md-12">
                             <div class="position-relative mb-3">
                                 <label class="form-label" for="new-password">Nouveau mot de passe</label>
-                                <input name="new-password" id="new-password"
+                                <input name="password" id="new-password"
                                     placeholder="Nouveau mot de passe ici..." type="password" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="position-relative mb-3">
                                 <label class="form-label" for="confirm-password">Confirmez mot de passe</label>
-                                <input name="confirm-password" id="confirm-password"
+                                <input name="password_confirmation" id="confirm-password"
                                     placeholder="confirmez mot de passe ici..." type="password" class="form-control">
                             </div>
                         </div>

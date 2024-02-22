@@ -18,27 +18,27 @@ class UserController extends Controller
     public function create_Default_User($id,$password_defautl){
 
         User::create([
-            'CODE'=>'CASHONE',
-            'NOM'=>'Utilisateur',
-            'PRENOMS'=>'Système',
-            'PROFILE'=>$id,
-            'EMAIL'=>'joel.gompewo@mentall.net',
-            'TELEPHONE'=>'2733727543',
-            'MOBILE'=>'0707068084',
-            'PSW_IS_DEFAULT'=>Hash::make($password_defautl),
-            'STATUT'=>10,
+            'code'=>'CASHONE',
+            'name'=>'Utilisateur',
+            'firstname'=>'Système',
+            'profile'=>$id,
+            'email'=>'joel.gompewo@mentall.net',
+            'telephone'=>'2733727543',
+            'mobile'=>'0707068084',
+            'default_password'=>Hash::make($password_defautl),
+            'statut'=>10,
         ]);
-    
+
     }
 
     public function profile_Default(){
 
         Profile::create([
-            'CODE'=>'ADS',
-            'LIBELLE'=>'Administrateur système',
-            'TYPE'=>1,
-            'STATUT'=>10,
-            'AUTEUR'=>'Système'
+            'code'=>'ADS',
+            'libelle'=>'Administrateur système',
+            'type'=>1,
+            'statut'=>10,
+            'auteur'=>'Système'
 
         ]);
     }

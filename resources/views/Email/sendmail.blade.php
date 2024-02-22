@@ -78,7 +78,7 @@
 
                         <p>Votre compte a été créé avec succès. <br>
                         Code Utilisateur: {{$email}} <br>
-                        Mot de passe par defaut <span> {{$motdepass}}.</span></p>
+                        Mot de passe par defaut: <span> {{$motdepass}}.</span></p>
 
                         <p>Vous devez changer ce mot de passe lors de votre prémière connexion à CASHONE. </p>
                         <p>Cordialement.</p>
