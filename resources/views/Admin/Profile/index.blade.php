@@ -70,13 +70,18 @@
                     </button>
                 </li>
                 <li class="nav-item">
-                    <button onclick="" class="mb-2 me-2 btn-icon btn btn-secondary" >
-                        <i class="nav-link-icon pe-7s-refresh-2"></i> Modifier
+                    <button id="btn-modif-profile" class="mb-2 me-2 btn-icon btn btn-secondary" >
+                        <i class="nav-link-icon pe-7s-note"></i> Modifier
                     </button>
                 </li>
                 <li class="nav-item">
-                    <button onclick="" class="mb-2 me-2 btn-icon btn btn-secondary" >
-                        <i class="nav-link-icon pe-7s-refresh-2"></i> Exporter vers 
+                    <button id="download-xlsx" class="mb-2 me-2 btn-icon btn btn-secondary" >
+                        <i class="nav-link-icon pe-7s-download"></i> Exporter vers Xsls
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button id="download-pdf" class="mb-2 me-2 btn-icon btn btn-secondary" >
+                        <i class="nav-link-icon pe-7s-download"></i> Exporter vers pdf
                     </button>
                 </li>
             </ul>

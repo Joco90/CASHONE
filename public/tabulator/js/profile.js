@@ -4,6 +4,7 @@ var table = new Tabulator("#profile-table", {
     paginationSize:6,
     paginationSizeSelector:[3, 6, 8, 10,15],
     movableColumns:true,
+    // columnHeaderVertAlign:"center",
     columns:[
       {formatter:"rowSelection", titleFormatter:"rowSelection", hozAlign:"center", headerSort:false, cellClick:function(e, cell){
         cell.getRow().toggleSelect();
@@ -23,6 +24,32 @@ var table = new Tabulator("#profile-table", {
     layout:"fitColumns"
 });
 
+document.getElementById("download-xlsx").addEventListener("click", function(){
+    table.download("xlsx", "liste-profile.xlsx", {sheetName:"My Data"});
+});
+
+//trigger download of data.pdf file
+document.getElementById("download-pdf").addEventListener("click", function(){
+    table.download("pdf", "liste-profile.pdf", {
+        orientation:"portrait", //set page orientation to portrait
+        title:"Example Report", //add title to report
+    });
+});
+
+function checkboxChange(id){
+    statut=document.getElementById(id);
+    label=document.getElementById('labStatut');
+    if (statut.checked===true) {
+        label.style.color="green";
+        label.innerHTML="Activé";
+        statut.value=1;
+    }else{
+        label.style.color="red";
+        label.innerHTML="Désactivé";
+        statut.value=0;
+    }
+    console.log(statut.value);
+}
 function formatterType(type){
     let val=type.getValue();
     let libelle;
@@ -51,6 +78,31 @@ function formatterStatut(status){
 function actualiser(){
     table.setData();
 }
+
+
+document.getElementById("btn-modif-profile").addEventListener("click", function(){
+    let profile=table.getSelectedData();
+    if(profile.length==0){
+        Swal.fire({
+            icon:"error",
+            title: "Oops,Erreur détectée.",
+            text: "Aucune ligne n'a été sélectionnée pour cette opération!",
+            });
+    }else{
+        formMod=document.getElementById("profile-form-edit");
+        formMod.code.value=profile[0]['code'];
+        formMod.code.setAttribute('disabled',true);
+        formMod.id.value=profile[0]['id'];
+        formMod.libelle.value=profile[0]['libelle'];
+        formMod.type.value=profile[0]['type'];
+        formMod.statut.value=profile[0]['statut'];
+
+        $('#edit-profile').modal('show');
+    }
+
+    console.log(profile.length);
+});
+
 
 // Form Validation
 function clickbtn(){
@@ -169,7 +221,7 @@ function _applique(){
         submitHandler: function(form) {
         $('#btn_application').html('Enregistrement en cours...')
         $('#btn_application').attr('disabled',true)
-            console.log( form.libelle.value)
+            // console.log( form.libelle.value)
         $.post("/save-profile",
         {
             "_token": form._token.value,
@@ -205,6 +257,44 @@ function _applique(){
 
     });
 
+}
+
+function editProfile(){
+    formEdit=document.getElementById("profile-form-edit");
+    $('#btn_edit').html('Traitement en cours...')
+    $('#btn_edit').attr('disabled',true)
+
+    $.post("/edit-profile",
+        {
+            "_token": formEdit._token.value,
+            code: formEdit.code.value,
+            libelle: formEdit.libelle.value,
+            type: formEdit.type.value,
+            statut: formEdit.statut.value,
+        },
+        function(data){
+            // console.log(data)
+            $('#btn_edit').html('Enregistrer la modification')
+            $('#btn_edit').attr('disabled',false)
+            console.log(data);
+            if(data.resultat==false){
+
+                Swal.fire({
+                    title: "OOp, Erreur détectée!",
+                    text: `${data.message_return}`,
+                    icon: "error"
+                  });
+            }else{
+
+                Swal.fire({
+                    title: "Succès!",
+                    text: `${data.message_return}`,
+                    icon: "success"
+                  });
+                actualiser()
+            }
+                console.log(data);
+        });
 }
 
 

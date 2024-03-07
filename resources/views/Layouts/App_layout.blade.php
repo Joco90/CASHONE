@@ -12,5 +12,9 @@
 
 @include('Partials.foot')
 {{-- Lot des modals --}}
-@include('Modals.create-profile')
+@if (Route::is(['profile']))
+    @include('Modals.create-profile')
+    @include('Modals.edit-profile')
+@endif
+
 

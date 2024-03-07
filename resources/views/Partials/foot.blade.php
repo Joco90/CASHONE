@@ -28,6 +28,9 @@
         <script type="text/javascript" src="{{asset('/js/carousel-slider.js')}}"></script>
         <script type="text/javascript" src="{{asset('/js/app.js')}}"></script>
         <script type="text/javascript" src="{{asset('Auth/js/Application.js')}}"></script>
+        <script type="text/javascript" src="{{asset('tabulator/js/xlsx.full.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('tabulator/js/jspdf.umd.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('tabulator/js/jspdf.plugin.autotable.min.js')}}"></script>
         @if (Route::is(['profile']))
             <script type="text/javascript" src="{{asset('tabulator/js/tabulator.min.js')}}"></script>
             <script type="text/javascript" src="{{asset('tabulator/js/profile.js')}}"></script>

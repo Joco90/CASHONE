@@ -90,9 +90,19 @@ class ProfileController extends Controller
      * @param  \App\Models\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function edit(Profile $profile)
+    public function edit(Request $request)
     {
         //
+        $profile=Profile::Where('code',$_POST['code'])->first();
+
+        if ($profile) {
+            $profile->libelle=$_POST['libelle'];
+            $profile->type=$_POST['type'];
+            $profile->statut=$_POST['statut'];
+            $profile->save();
+            return response()->json(["message_return"=>"Traitement effectué avec succès.","resultat"=>true]);
+
+        }else return response()->json(["message_return"=>"Le profile sélectionné ne peut être modifié. Vueillez contacter l'administrateur.","resultat"=>false]);
     }
 
     /**

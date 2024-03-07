@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/login','App\Http\Controllers\Authenfication\LoginController@index')->name('login');
+Route::get('/','App\Http\Controllers\Authenfication\LoginController@index')->name('login');
     Route::post('/authentification','App\Http\Controllers\Authenfication\LoginController@login')->name('Auth.connexion');
     Route::get('/forget-password','App\Http\Controllers\Authenfication\ForgetPasswordController@index')->name('Auth.forget');
 
@@ -33,4 +33,5 @@ Route::group(['middleware' => 'auth'], function (){
     // Profile
     Route::post('/save-profile',[App\Http\Controllers\Admin\ProfileController::class, 'createProfile'])->name("save-profile");
     Route::get('/profile',[App\Http\Controllers\Admin\ProfileController::class, 'index'])->name('profile');
+    Route::post('/edit-profile',[App\Http\Controllers\Admin\ProfileController::class, 'edit'])->name('editProfile');
 });
