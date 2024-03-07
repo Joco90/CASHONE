@@ -75,6 +75,11 @@
                     </button>
                 </li>
                 <li class="nav-item">
+                    <button id="btn-del-profile" class="mb-2 me-2 btn-icon btn btn-secondary" >
+                        <i class="nav-link-icon pe-7s-trash"></i> Supprimer
+                    </button>
+                </li>
+                <li class="nav-item">
                     <button id="download-xlsx" class="mb-2 me-2 btn-icon btn btn-secondary" >
                         <i class="nav-link-icon pe-7s-download"></i> Exporter vers Xsls
                     </button>

@@ -33,5 +33,5 @@ Route::group(['middleware' => 'auth'], function (){
     // Profile
     Route::post('/save-profile',[App\Http\Controllers\Admin\ProfileController::class, 'createProfile'])->name("save-profile");
     Route::get('/profile',[App\Http\Controllers\Admin\ProfileController::class, 'index'])->name('profile');
-    Route::post('/edit-profile',[App\Http\Controllers\Admin\ProfileController::class, 'edit'])->name('editProfile');
+    Route::post('/edit-profile',[App\Http\Controllers\Admin\ProfileController::class, 'update'])->name('editProfile');
 });

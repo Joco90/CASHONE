@@ -97,6 +97,11 @@ document.getElementById("btn-modif-profile").addEventListener("click", function(
         formMod.type.value=profile[0]['type'];
         formMod.statut.value=profile[0]['statut'];
 
+        if(formMod.statut.value!==0){
+            formMod.statut.checked=true;
+        }else formMod.statut.checked=false;
+        console.log(formMod.statut.value)
+        console.log(formMod.statut)
         $('#edit-profile').modal('show');
     }
 
@@ -276,6 +281,7 @@ function editProfile(){
             // console.log(data)
             $('#btn_edit').html('Enregistrer la modification')
             $('#btn_edit').attr('disabled',false)
+            $('#edit-profile').modal('hide');
             console.log(data);
             if(data.resultat==false){
 

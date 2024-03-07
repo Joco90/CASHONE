@@ -93,6 +93,19 @@ class ProfileController extends Controller
     public function edit(Request $request)
     {
         //
+
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Profile  $profile
+     * @return \Illuminate\Http\Response
+     */
+    public function update()
+    {
+        //
         $profile=Profile::Where('code',$_POST['code'])->first();
 
         if ($profile) {
@@ -103,18 +116,6 @@ class ProfileController extends Controller
             return response()->json(["message_return"=>"Traitement effectué avec succès.","resultat"=>true]);
 
         }else return response()->json(["message_return"=>"Le profile sélectionné ne peut être modifié. Vueillez contacter l'administrateur.","resultat"=>false]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Profile  $profile
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Profile $profile)
-    {
-        //
     }
 
     /**
