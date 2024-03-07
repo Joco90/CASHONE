@@ -11,4 +11,6 @@
 </div>
 
 @include('Partials.foot')
+{{-- Lot des modals --}}
+@include('Modals.create-profile')
 

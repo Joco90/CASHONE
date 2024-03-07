@@ -9,7 +9,7 @@ class DashboardController extends Controller
 {
     //
     public function index(){
-
-        return view('Dashboard._dashbord');
+        $_title="Cashone | Gestion de profile";
+        return view('Dashboard._dashbord',["title"=>$_title]);
     }
 }

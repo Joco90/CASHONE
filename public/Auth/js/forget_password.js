@@ -29,7 +29,7 @@ $(document).ready(() => {
       submitHandler: function(form) {
         $('#btnEvoie').html('Envoie en cours...')
         $('#btnEvoie').attr('disabled',true)
-            $.post("/api/forget-password",
+        $.post("/api/forget-password",
         {
             "_token": form._token.value,
             email: form.email.value,

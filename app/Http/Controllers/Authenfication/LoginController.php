@@ -62,7 +62,7 @@ class LoginController extends Controller
                 if (Hash::check($request->get('password'), $user->default_password)) {
                     Auth::guard()->login($user);
                     $request->session()->regenerate();
-                    return redirect('Auth/change-password');
+                    return redirect('change-password');
                 }
                 return redirect()->back()->
                 withErrors("Le mot de passe par defaut est incorrect.");
@@ -70,7 +70,7 @@ class LoginController extends Controller
             }else{
                 if (Hash::check($request->get('password'), $user->password)) {
                     Auth::guard()->login($user);
-                    return redirect('dashboard/panel');
+                    return redirect('/panel');
                 }else return redirect()->back()->withErrors("Le mot de passe est incorrect.");
 
             }

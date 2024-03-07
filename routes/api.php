@@ -19,3 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/forget-password','App\Http\Controllers\Authenfication\ForgetPasswordController@_forget');
+
+Route::get('/liste-profile',[App\Http\Controllers\Admin\ProfileController::class, 'show']);
+
+
