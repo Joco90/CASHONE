@@ -38,7 +38,7 @@
                     </h6>
                     <div class="modal-footer clearfix">
                         <div class="float-start">
-                            <button type="submit" class="btn btn-primary btn-lg"> CONNEXION AU PANEL</button>
+                            <button type="submit" class="btn btn-success btn-lg"> CONNEXION AU PANEL</button>
                         </div>
                         {{-- <div class="float-end">
                             <button class="btn btn-primary btn-lg">Login to Dashboard</button>

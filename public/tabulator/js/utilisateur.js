@@ -1,4 +1,4 @@
-var table = new Tabulator("#profile-table", {
+var table = new Tabulator("#user-table", {
     height:"300px",
     pagination:"local",
     paginationSize:6,
@@ -9,30 +9,44 @@ var table = new Tabulator("#profile-table", {
       {formatter:"rowSelection", titleFormatter:"rowSelection", hozAlign:"center", headerSort:false, cellClick:function(e, cell){
         cell.getRow().toggleSelect();
       },width:20},
-      {title:"Code profile", field:"code"},
-      {title:"Libelle", field:"libelle"},
-      {title:"Type profile", field:"type",formatter:formatterType},
-      {title:"Statut", field:"statut", hozAlign:"center",formatter:formatterStatut},
-      {title:"Auteur", field:"auteur"},
-      {title:"Créer le", field:"created_at", hozAlign:"center", sorter:"date",formatter:(cell)=>{
+      {title:"Profile", field:"profile", hozAlign:"center"},
+      {title:"Id utilisateur", field:"code", hozAlign:"center"},
+      {title:"Nom", field:"name", hozAlign:"center"},
+      {title:"Prénoms", field:"firstname", hozAlign:"center"},
+      {title:"Matricule", field:"matricule", hozAlign:"center"},
+      {title:"Adresse mail", field:"email", hozAlign:"center"},
+      {title:"Téléphone", field:"telephone", hozAlign:"center"},
+      {title:"Mobile", field:"mobile", hozAlign:"center"},
+      {title:"Bloc", field:"bloc",visible:false},
+      {title:"date_bloc", field:"date_bloc", sorter:"date",formatter:(cell)=>{
+        let val = cell.getValue();
+        return `${moment(val).format('DD/MM/YYYY')}`
+      }},
+      {title:"Motif_bloc", field:"motif_bloc"},
+      {title:"statut", field:"statut",visible:false},
+      {title:"debut_activ", field:"debut_activ",visible:false},
+      {title:"fin_activ", field:"fin_activ",visible:false},
+      {title:"Initial", field:"initial"},
+      {title:"Idjade", field:"idjade"},
+      {title:"créer le", field:"created_at", hozAlign:"center", sorter:"date",formatter:(cell)=>{
         let val = cell.getValue();
         return `${moment(val).format('DD/MM/YYYY')}`
       }},
       {title:"Action",field:"id", visible:false},
     ],
-    ajaxURL: "/api/liste-profile",
+    ajaxURL: "/api/liste-users",
     layout:"fitColumns"
 });
 
-document.getElementById("download-xlsx").addEventListener("click", function(){
-    table.download("xlsx", "liste-profile.xlsx", {sheetName:"My Data"});
+document.getElementById("download-xlsx-user").addEventListener("click", function(){
+    table.download("xlsx", "Liste-utilisateur.xlsx", {sheetName:"My Data"});
 });
 
 //trigger download of data.pdf file
-document.getElementById("download-pdf").addEventListener("click", function(){
-    table.download("pdf", "liste-profile.pdf", {
-        orientation:"portrait", //set page orientation to portrait
-        title:"Example Report", //add title to report
+document.getElementById("download-pdf-user").addEventListener("click", function(){
+    table.download("pdf", "Liste-utilisateur.pdf", {
+        orientation:"portrait",
+        title:"Export des utilisateurs",
     });
 });
 
@@ -50,7 +64,6 @@ function checkboxChange(id){
     }
     console.log(statut.value);
 }
-
 function formatterType(type){
     let val=type.getValue();
     let libelle;

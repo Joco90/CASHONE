@@ -31,9 +31,10 @@
         <script type="text/javascript" src="{{asset('tabulator/js/xlsx.full.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('tabulator/js/jspdf.umd.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('tabulator/js/jspdf.plugin.autotable.min.js')}}"></script>
-        @if (Route::is(['profile']))
+        @if (Route::is(['profile','users.liste']))
             <script type="text/javascript" src="{{asset('tabulator/js/tabulator.min.js')}}"></script>
             <script type="text/javascript" src="{{asset('tabulator/js/profile.js')}}"></script>
+            <script type="text/javascript" src="{{asset('tabulator/js/utilisateur.js')}}"></script>
         @endif
         <script type="text/javascript" src="{{asset('Auth/js/sweetalert2.all.min.js')}}"></script>
     </body>

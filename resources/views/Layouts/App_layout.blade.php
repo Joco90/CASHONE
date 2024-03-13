@@ -12,9 +12,10 @@
 
 @include('Partials.foot')
 {{-- Lot des modals --}}
-@if (Route::is(['profile']))
+@if (Route::is(['profile','users.liste']))
     @include('Modals.create-profile')
     @include('Modals.edit-profile')
+    @include('Modals.create-user')
 @endif
 
 

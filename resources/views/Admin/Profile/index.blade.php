@@ -14,7 +14,7 @@
                             <div class="page-title-subheading">Enregistrement,modification,suppression des profiles.</div>
                         </div>
                     </div>
-                    <div class="page-title-actions">
+                    {{-- <div class="page-title-actions">
 
                         <div class="d-inline-block dropdown">
                             <button type="button" data-bs-toggle="dropdown" aria-haspopup="true"
@@ -55,7 +55,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <ul class="body-tabs body-tabs-layout tabs-animated body-tabs-animated nav">
@@ -75,9 +75,12 @@
                     </button>
                 </li>
                 <li class="nav-item">
-                    <button id="btn-del-profile" class="mb-2 me-2 btn-icon btn btn-secondary" >
-                        <i class="nav-link-icon pe-7s-trash"></i> Supprimer
-                    </button>
+                    <form id="del-profile">
+                        @csrf
+                        <button type="submit" id="btn-del-profile" class="mb-2 me-2 btn-icon btn btn-secondary" >
+                            <i class="nav-link-icon pe-7s-trash"></i> Supprimer
+                        </button>
+                    </form>
                 </li>
                 <li class="nav-item">
                     <button id="download-xlsx" class="mb-2 me-2 btn-icon btn btn-secondary" >

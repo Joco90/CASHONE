@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Profile;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
@@ -74,7 +76,6 @@ class ProfileController extends Controller
     {
         //Enregistrement de profile
 
-
     }
 
 
@@ -118,14 +119,27 @@ class ProfileController extends Controller
         }else return response()->json(["message_return"=>"Le profile sélectionné ne peut être modifié. Vueillez contacter l'administrateur.","resultat"=>false]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Profile  $profile
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Profile $profile)
+
+
+    public function destroy(Request $request)
     {
-        //
+        // dd();
+         $liste=$_POST['listeP'];
+
+        // $test=Profile::whereIn('id', ($liste))->toSql();
+        // return response()->json(["message_return"=>"Test encore","resultat"=>true,"don"=>$test]);
+        $user=User::WhereIn('profile',($liste))->count();
+        if ($user==0) {
+            $profileP=Profile::whereIn('id',($liste))->delete();
+
+            if ($profileP) {
+                return response()->json(["message_return"=>"Traitement effectué avec succès.","resultat"=>true,"don"=>$liste]);
+            }else return response()->json(["message_return"=>"Traitement impossible.","resultat"=>false,"don"=>$liste]);
+
+        }else{
+            return response()->json(["message_return"=>"Certains profiles sont liés à un utilisateur. Opération impossible!","resultat"=>false,"don"=>$user]);
+        }
+
+
     }
 }

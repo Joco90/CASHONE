@@ -4183,13 +4183,16 @@ textarea.form-control-lg {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 80%;
   pointer-events: auto;
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.3rem;
-  outline: 0; }
+  outline: 0;
+  box-shadow:inset 0 0 0.03em gold,
+  0 0 0.3em green;
+ }
 
 .modal-backdrop, .blockOverlay {
   position: fixed;
@@ -4231,7 +4234,7 @@ textarea.form-control-lg {
   flex-wrap: wrap;
   flex-shrink: 0;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   padding: 0.75rem;
   border-top: 2px solid #dee2e6;
   border-bottom-right-radius: calc(0.3rem - 1px);
@@ -9046,9 +9049,9 @@ button,
   background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%) !important; }
 
 .bg-plum-plate {
-    /* background: url('/imginterface/cie.jpg');
-    background-repeat: no-repeat; */
-  background-image: linear-gradient(135deg, #667eea 0%, #764ba3 100%) !important;
+     /* background: url('/imginterface/cie.jpg'); */
+    /* background-repeat: no-repeat; */
+  /* background-image: linear-gradient(135deg, #667eea 0%, #764ba3 100%) !important; */
  }
 
 .bg-happy-fisher {
@@ -12699,14 +12702,15 @@ a.avatar-icon-wrapper:hover .avatar-icon {
 
 .modal-header,
 .modal-footer {
-  background: #f8f9fa; }
+  /* background: #f8f9fa; */
+}
 
 .modal-footer {
   border-bottom-right-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem; }
 
 .modal-dialog {
-  box-shadow: 0 0.76875rem 2.4875rem rgba(52, 58, 64, 0.3), 0 1.3375rem 1.70625rem rgba(52, 58, 64, 0.3), 0 0.55rem 0.53125rem rgba(0, 0, 0, 0.05), 0 0.225rem 0.4375rem rgba(52, 58, 64, 0.3);
+  /* box-shadow: 0 0.76875rem 2.4875rem rgba(52, 58, 64, 0.3), 0 1.3375rem 1.70625rem rgba(52, 58, 64, 0.3), 0 0.55rem 0.53125rem rgba(0, 0, 0, 0.05), 0 0.225rem 0.4375rem rgba(52, 58, 64, 0.3); */
   border-radius: 0.25rem; }
 
 /**
