@@ -41,4 +41,5 @@ Route::group(['middleware' => 'auth'], function (){
     // Users
     Route::get('/liste-users','UtilisateurController@index')->name('users.liste');
     Route::get('/user-create','UtilisateurController@create')->name('users.create');
+    Route::post('/user-save','UtilisateurController@save')->name('users.save');
 });

@@ -1,4 +1,4 @@
-var table = new Tabulator("#user-table", {
+var tableUser = new Tabulator("#user-table", {
     height:"300px",
     pagination:"local",
     paginationSize:6,
@@ -39,47 +39,47 @@ var table = new Tabulator("#user-table", {
 });
 
 document.getElementById("download-xlsx-user").addEventListener("click", function(){
-    table.download("xlsx", "Liste-utilisateur.xlsx", {sheetName:"My Data"});
+    tableUser.download("xlsx", "Liste-utilisateur.xlsx", {sheetName:"My Data"});
 });
 
 //trigger download of data.pdf file
 document.getElementById("download-pdf-user").addEventListener("click", function(){
-    table.download("pdf", "Liste-utilisateur.pdf", {
+    tableUser.download("pdf", "Liste-utilisateur.pdf", {
         orientation:"portrait",
         title:"Export des utilisateurs",
     });
 });
 
-function checkboxChange(id){
-    statut=document.getElementById(id);
-    label=document.getElementById('labStatut');
-    if (statut.checked===true) {
-        label.style.color="green";
-        label.innerHTML="Activé";
-        statut.value=1;
-    }else{
-        label.style.color="red";
-        label.innerHTML="Désactivé";
-        statut.value=0;
-    }
-    console.log(statut.value);
-}
-function formatterType(type){
-    let val=type.getValue();
-    let libelle;
-    switch (val) {
-        case 1: libelle='Administrateur système';
-            break;
-        case 2: libelle='Administrateur limité';
-            break;
-        case 3: libelle='Utilisateur standard';
-            break;
+// function checkboxChange(id){
+//     statut=document.getElementById(id);
+//     label=document.getElementById('labStatut');
+//     if (statut.checked===true) {
+//         label.style.color="green";
+//         label.innerHTML="Activé";
+//         statut.value=1;
+//     }else{
+//         label.style.color="red";
+//         label.innerHTML="Désactivé";
+//         statut.value=0;
+//     }
+//     console.log(statut.value);
+// }
+// function formatterType(type){
+//     let val=type.getValue();
+//     let libelle;
+//     switch (val) {
+//         case 1: libelle='Administrateur système';
+//             break;
+//         case 2: libelle='Administrateur limité';
+//             break;
+//         case 3: libelle='Utilisateur standard';
+//             break;
 
-        default:
-            break;
-    }
-    return libelle;
-}
+//         default:
+//             break;
+//     }
+//     return libelle;
+// }
 
 function formatterStatut(status){
     let statut=status.getValue();
@@ -94,8 +94,8 @@ function actualiser(){
 }
 
 
-document.getElementById("btn-modif-profile").addEventListener("click", function(){
-    let profile=table.getSelectedData();
+document.getElementById("btn-modif-user").addEventListener("click", function(){
+    let profile=tableUser.getSelectedData();
     if(profile.length==0){
         Swal.fire({
             icon:"error",
@@ -103,7 +103,7 @@ document.getElementById("btn-modif-profile").addEventListener("click", function(
             text: "Aucune ligne n'a été sélectionnée pour cette opération!",
             });
     }else{
-        formMod=document.getElementById("profile-form-edit");
+        formMod=document.getElementById("user-form-edit");
         formMod.code.value=profile[0]['code'];
         formMod.code.setAttribute('disabled',true);
         formMod.id.value=profile[0]['id'];
@@ -116,16 +116,16 @@ document.getElementById("btn-modif-profile").addEventListener("click", function(
         }else formMod.statut.checked=false;
         console.log(formMod.statut.value)
         console.log(formMod.statut)
-        $('#edit-profile').modal('show');
+        $('#user-profile').modal('show');
     }
 
     console.log(profile.length);
 });
 
-$('#del-profile').submit(function(e){
+$('#del-user').submit(function(e){
         e.preventDefault()
-    let listeProfile=table.getSelectedData();
-     form=document.getElementById("del-profile")
+    let listeProfile=tableUser.getSelectedData();
+     form=document.getElementById("del-user")
     let liste=[]
     // console.log(liste.push(1,2,3))
     if(listeProfile.length==0){
@@ -145,21 +145,21 @@ $('#del-profile').submit(function(e){
             confirmButtonText: "Oui, Supprimer!"
           }).then((result) => {
             if (result.isConfirmed) {
-                $('#btn-del-profile').html('Traitement en cours...')
-                $('#btn-del-profile').attr('disabled',true)
+                $('#btn-del-user').html('Traitement en cours...')
+                $('#btn-del-user').attr('disabled',true)
                 listeProfile.forEach(element => {
                     liste.push(element['id'])
                     });
                 // liste="["+liste.substring(0,liste.length-1)+"]"
 
-                $.post("/del-profile",
+                $.post("/del-user",
                 {
                     "_token": form._token.value,
                     listeP:liste,
                 },
                 function(data){
-                    $('#btn-del-profile').html('Supprimer')
-                    $('#btn-del-profile').attr('disabled',false)
+                    $('#btn-del-user').html('Supprimer')
+                    $('#btn-del-user').attr('disabled',false)
                     if (data.resultat==false) {
                         // console.log(data.message_return)
                         // console.log(data.don+" echec")
@@ -366,7 +366,7 @@ function editProfile(){
             $('#btn_edit').html('Enregistrer la modification')
             $('#btn_edit').attr('disabled',false)
             $('#edit-profile').modal('hide');
-            console.log(data);
+            // console.log(data);
             if(data.resultat==false){
 
                 Swal.fire({
@@ -383,7 +383,7 @@ function editProfile(){
                   });
                 actualiser()
             }
-                console.log(data);
+                // console.log(data);
         });
 }
 

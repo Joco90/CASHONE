@@ -168,7 +168,7 @@ $('#del-profile').submit(function(e){
 
                 }).fail((done)=>{
 
-                    console.log(done)
+                    // console.log(done)
                 })
 
             }
@@ -176,7 +176,7 @@ $('#del-profile').submit(function(e){
 
 
 
-     console.log(liste)
+    //  console.log(liste)
 }
 
 });
@@ -218,7 +218,7 @@ function clickbtn(){
         submitHandler: function(form) {
         $('#btn_save').html('Enregistrement en cours...')
         $('#btn_save').attr('disabled',true)
-            console.log( form.libelle.value)
+
         $.post("/save-profile",
         {
             "_token": form._token.value,
@@ -326,7 +326,7 @@ function _applique(){
                 form.libelle.value=""
                 actualiser()
             }
-                console.log(data);
+
         });
 
         },
@@ -353,7 +353,7 @@ function editProfile(){
             $('#btn_edit').html('Enregistrer la modification')
             $('#btn_edit').attr('disabled',false)
             $('#edit-profile').modal('hide');
-            console.log(data);
+
             if(data.resultat==false){
 
                 Swal.fire({
@@ -370,7 +370,7 @@ function editProfile(){
                   });
                 actualiser()
             }
-                console.log(data);
+
         });
 }
 

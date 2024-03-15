@@ -55,9 +55,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" onclick="clickbtn()" id="btn_save" class="btn btn-primary">Enregistrer le profile</button>
-                        <button type="submit" onclick="_applique()" id="btn_application" class="btn btn-secondary">Appliquer</button>
-                        <button type="button" id="btn_close" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+                        <button type="submit" onclick="clickbtn()" id="btn_save-user" class="btn btn-primary">Enregistrer le profile</button>
+                        <button type="submit" onclick="_applique()" id="btn_application-user" class="btn btn-secondary">Appliquer</button>
+                        <button type="button" id="btn_close-user" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
 
                     </div>
                 </form>

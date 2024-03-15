@@ -42,20 +42,20 @@
                     <ul>
                         <li>
                             <a href="#">
-                                <i class="metismenu-icon pe-7s-config"></i>
+                                <i class="metismenu-icon"></i>
                                Profiles et droits
-                                <i class="metismenu-state-icon caret-left"></i>
+                                <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                             </a>
                             <ul>
                                 <li>
                                     <a href="{{route('profile')}}">
-                                        <i class="metismenu-icon"></i>
+                                        <i class="pe-7s-plus"></i>
                                       Profiles
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <i class="metismenu-icon"></i>
+                                        <i class="pe-7s-plus"></i>
                                       Droits
                                     </a>
                                 </li>
@@ -68,19 +68,19 @@
                         <li>
                             <a href="#">
                                 <i class="metismenu-icon"></i>
-                                Utilisateurs et mot de passe
+                                Gestion des utilisateurs
                                 <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                             </a>
                             <ul>
                                 <li>
                                     <a href="{{route('users.liste')}}">
-                                        <i class="metismenu-icon"></i>
+                                        <i class="pe-7s-plus"></i>
                                         Standard
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="elements-buttons-standard.html">
-                                        <i class="metismenu-icon"></i>
+                                    <a href="">
+                                        <i class="pe-7s-plus"></i>
                                         Système
                                     </a>
                                 </li>
@@ -105,14 +105,14 @@
                             </a>
                             <ul>
                                 <li>
-                                    <a href="elements-buttons-standard.html">
-                                        <i class="metismenu-icon"></i>
+                                    <a href="">
+                                        <i class="pe-7s-plus"></i>
                                       Enregistrement
                                     </a>
                                 </li>
                                 <li>
                                     <a href="elements-buttons-standard.html">
-                                        <i class="metismenu-icon"></i>
+                                        <i class="pe-7s-plus"></i>
                                       Paramétrage
                                     </a>
                                 </li>
@@ -131,13 +131,13 @@
                             <ul>
                                 <li>
                                     <a href="elements-buttons-standard.html">
-                                        <i class="metismenu-icon"></i>
+                                        <i class="pe-7s-plus"></i>
                                         Enregistrement
                                     </a>
                                 </li>
                                 <li>
                                     <a href="elements-buttons-standard.html">
-                                        <i class="metismenu-icon"></i>
+                                        <i class="pe-7s-plus"></i>
                                         Paramétrage
                                     </a>
                                 </li>
@@ -148,91 +148,321 @@
                     </ul>
                 </li>
 
-
                 <li class="app-sidebar__heading">Paramétrages générales</li>
                 <li>
                     <a href="#">
-                        <i class="metismenu-icon pe-7s-diamond"></i>
-                        Elements
+                        <i class="metismenu-icon pe-7s-notebook"></i>
+                        Codes analytiques
                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                     </a>
                     <ul>
                         <li>
-                            <a href="#">
-                                <i class="metismenu-icon"></i>
-                                Buttons
-                                <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                            <a href="">
+                                <i class="pe-7s-global"></i>
+                                Société
                             </a>
-                            <ul>
-                                <li>
-                                    <a href="elements-buttons-standard.html">
-                                        <i class="metismenu-icon"></i>
-                                        Standard
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="elements-buttons-pills.html">
-                                        <i class="metismenu-icon"></i>
-                                        Pills
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="elements-buttons-square.html">
-                                        <i class="metismenu-icon"></i>
-                                        Square
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="elements-buttons-shadow.html">
-                                        <i class="metismenu-icon"></i>
-                                        Shadow
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="elements-buttons-icons.html">
-                                        <i class="metismenu-icon"></i>
-                                        With Icons
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
-
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-culture"></i>
+                               Banques
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Comptes bancaires
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Gestionnaires
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Catégories tiers
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Tiers
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Tiers - Interlocuteurs
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Pôles
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Directions
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Sous - Directions
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Centres imputation
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Devises
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Caisses
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Services
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Tâches
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="metismenu-icon pe-7s-notebook"></i>
+                        Codes opérations
+                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Natures comptables
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                               Correspondance CN - Comptabilité
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Codes interbancaires
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Correspondance CIB - Relevés Bancaires
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Motifs règlements
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Modes paiements
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Motifs de rejets
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Motifs blocages
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Types de dossiers
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Calendrier
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="metismenu-icon pe-7s-notebook"></i>
+                        Personnel
+                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Ajouter
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-download"></i>
+                                Importer
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-search"></i>
+                                Recherche
+                            </a>
+                        </li>
 
                     </ul>
                 </li>
-
                 <li class="app-sidebar__heading">Gestion des cartes</li>
 
                 <li>
                     <a href="#">
-                        <i class="metismenu-icon pe-7s-diamond"></i>
-                        Elements
+                        <i class="metismenu-icon pe-7s-notebook"></i>
+                        Saisie des cartes
                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                     </a>
                     <ul>
                         <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Ajout de cartes bancaires
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-download"></i>
+                                Importation des cartes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-search"></i>
+                                Recherche de cartes
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="metismenu-icon pe-7s-notebook"></i>
+                        Demandes de cartes
+                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Saisie d'une demande
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Transmission de damandde
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Validation de damande
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Edition et traitement de cartes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Réception de cartes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Sécurisation de cartes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                                Alertes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="pe-7s-plus"></i>
+                               Remise de cartes
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="metismenu-icon pe-7s-notebook"></i>
+                        Rechargement des cartes
+                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                    </a>
+                    <ul>
+                        <li class="">
                             <a href="#">
-                                <i class="metismenu-icon"></i>
-                                Buttons
+                                <i class="pe-7s-folder"></i>
+                                Bordereaux de paiement
                                 <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                             </a>
-                            <ul>
+                            <ul class="mm-show">
                                 <li>
-                                    <a href="elements-buttons-standard.html">
+                                    <a href="">
                                         <i class="metismenu-icon"></i>
-                                        Standard
+                                        Importation bon LOGEB
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="elements-buttons-pills.html">
+                                    <a href="">
                                         <i class="metismenu-icon"></i>
-                                        Pills
+                                        Réception des borderaux
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="elements-buttons-square.html">
+                                    <a href="">
                                         <i class="metismenu-icon"></i>
-                                        Square
+                                        Transmission pour contrôle
                                     </a>
                                 </li>
                                 <li>
@@ -242,21 +472,68 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="elements-buttons-icons.html">
+                                    <a href="elements-buttons-icons.html" class="mm-active">
                                         <i class="metismenu-icon"></i>
                                         With Icons
                                     </a>
                                 </li>
                             </ul>
                         </li>
-
+                        <li>
+                            <a href="elements-dropdowns.html">
+                                <i class="metismenu-icon"></i>
+                                Dropdowns
+                            </a>
+                        </li>
+                        <li>
+                            <a href="elements-icons.html">
+                                <i class="metismenu-icon"></i>
+                                Icons
+                            </a>
+                        </li>
+                        <li>
+                            <a href="elements-badges-labels.html">
+                                <i class="metismenu-icon"></i>
+                                Badges
+                            </a>
+                        </li>
+                        <li>
+                            <a href="elements-cards.html">
+                                <i class="metismenu-icon"></i>
+                                Cards
+                            </a>
+                        </li>
+                        <li>
+                            <a href="elements-loaders.html">
+                                <i class="metismenu-icon"></i>
+                                Loading Indicators
+                            </a>
+                        </li>
+                        <li>
+                            <a href="elements-list-group.html">
+                                <i class="metismenu-icon"></i>
+                                List Groups
+                            </a>
+                        </li>
+                        <li>
+                            <a href="elements-navigation.html">
+                                <i class="metismenu-icon"></i>
+                                Navigation Menus
+                            </a>
+                        </li>
+                        <li>
+                            <a href="elements-timelines.html">
+                                <i class="metismenu-icon"></i>
+                                Timeline
+                            </a>
+                        </li>
+                        <li>
+                            <a href="elements-utilities.html">
+                                <i class="metismenu-icon"></i>
+                                Utilities
+                            </a>
+                        </li>
                     </ul>
-                </li>
-                <li>
-                    <a href="widgets-profile-boxes.html">
-                        <i class="metismenu-icon pe-7s-id"></i>
-                        Profile Boxes
-                    </a>
                 </li>
                 <li class="app-sidebar__heading">Règlements</li>
                 <li>

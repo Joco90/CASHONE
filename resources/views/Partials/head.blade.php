@@ -20,4 +20,5 @@
         <link href="{{asset('/styles/css/base.css')}}" rel="stylesheet">
         <link href="{{asset('tabulator/css/tabulator.min.css')}}" rel="stylesheet">
         <link href="{{asset('Auth/css/sweetalert2.min.css')}}" rel="stylesheet">
+        <link href="{{asset('styles/css/choices.min.css')}}" rel="stylesheet">
     </head>

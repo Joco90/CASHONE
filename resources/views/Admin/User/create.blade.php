@@ -6,49 +6,82 @@
         <div class="app-page-title">
             <div class="page-title-wrapper">
                 <div class="page-title-heading">
-                    <div class="page-title-icon">
-                        <i class="pe-7s-car icon-gradient bg-mean-fruit"></i>
-                    </div>
                     <div>
-                        CASHONE - Utilisateur et mot de passe
-                        <div class="page-title-subheading">Enregistrement,modification,suppression des utilisateurs.</div>
+                        <div class="page-title-head center-elem">
+                            <span class="d-inline-block pe-2">
+                                <i class="lnr-apartment opacity-6"></i>
+                            </span>
+                            <span class="d-inline-block">CASHONE /Gestion des utilisateur</span>
+                        </div>
+                        <div class="page-title-subheading opacity-10">
+                            <nav class="" aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a>
+                                            <i aria-hidden="true" class="fa fa-home"></i>
+                                        </a>
+                                    </li>
+                                    <li class="breadcrumb-item">
+                                        <a href="{{route('panel')}}">CashOne</a>
+                                    </li>
+                                    <li class="active breadcrumb-item" aria-current="page">
+                                        Enregistrement des utilisateurs
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
                     </div>
                 </div>
                 <div class="page-title-actions">
                 </div>
             </div>
         </div>
+        {{-- Zone d'alerte --}}
+        {{-- <div class="mbg-3 alert alert-success alert-dismissible fade show" role="alert">
+            <span class="pe-2">
+                <i class="fa fa-exclamation-triangle"></i>
+            </span>
+            ................................
+        </div> --}}
+        {{-- Fin zone d'alerte --}}
         {{-- Form to create users --}}
         <div class="main-card mb-3 card">
             <div class="card-body">
                 <h5 class="card-title"></h5>
-                <form method="" class="">
+                <form method="POST" id="form-user-save" enctype="multipart/form-data">
+                    @csrf
                     <div class="row">
                         <div class="col-md-2">
                             <div class="position-relative mb-3">
                                 <label for="code" class="form-label">Code</label>
-                                <input name="email" id="code"
+                                <input name="code" id="code"
                                     placeholder="Saisir votre code" type="text" class="form-control">
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="position-relative mb-3">
                                 <label for="matricule" class="form-label">Matricule</label>
                                 <input name="matricule" id="matricule"
-                                    placeholder="Matricule"
                                     type="text" class="form-control">
                             </div>
+
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="position-relative mb-3">
                                 <label for="idjade" class="form-label">ID J@DE</label>
                                 <input name="idjade" id="idjade"
-                                    placeholder="Matricule"
                                     type="text" class="form-control">
                             </div>
                         </div>
 
+                        <div class="col-md-2">
+                            <div class="position-relative mb-3">
+                                <label for="initial-user" class="form-label">Initial</label>
+                                <input name="initial" id="initial-user"
+                                    type="text" class="form-control">
+                            </div>
+                        </div>
                         <div class="col-md-2">
                             <div class="position-relative mb-3">
                                 <label for="fin_activ" class="form-label">Fin activité</label>
@@ -57,43 +90,98 @@
                             </div>
                         </div>
                     </div>
-                    <div class="position-relative mb-3">
-                        <label for="exampleAddress" class="form-label">Address</label>
-                        <input name="address" id="exampleAddress"
-                            placeholder="1234 Main St"
-                            type="text" class="form-control">
-                    </div>
-                    <div class="position-relative mb-3">
-                        <label for="exampleAddress2" class="form-label">Address 2</label>
-                        <input name="address2" id="exampleAddress2"
-                            placeholder="Apartment, studio, or floor"
-                            type="text" class="form-control">
-                    </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="position-relative mb-3">
-                                <label for="exampleCity" class="form-label">City</label>
-                                <input name="city" id="exampleCity" type="text" class="form-control">
+                                <label for="profile-user" class="form-label">Profil</label>
+                                <select name="profile" id="profile-user" class="form-control form-select profiles">
+                                    <option value=""></option>
+                                    @foreach ($profiles as $profile)
+                                    <option value="{{$profile->id}}">{{$profile->libelle}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="position-relative mb-3">
-                                <label for="exampleState" class="form-label">State</label>
-                                <input name="state" id="exampleState" type="text" class="form-control">
+                                <label for="name" class="form-label">Nom</label>
+                                <input name="name" id="name"
+                                    type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="position-relative mb-3">
+                                <label for="firstname" class="form-label">Prénoms</label>
+                                <input name="firstname" id="firstname"
+                                    type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="position-relative mb-3">
+                                <label for="email" class="form-label">Addresse mail</label>
+                                <input name="email" id="email"
+                                    type="email" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="position-relative mb-3">
+                                <label for="telephone" class="form-label">Téléphone</label>
+                                <input name="telephone" id="telephone"
+                                    type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="position-relative mb-3">
+                                <label for="mobile-user" class="form-label">Mobile</label>
+                                <input name="mobile" id="mobile-user"
+                                    type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <div class="position-relative mb-3">
+                                <label for="photo" class="form-label">Photo</label>
+                                <input name="photo" id="photo"
+                                    type="file" class="">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="position-relative mb-3">
+                                <label for="signature" class="form-label">Signature</label>
+                                <input name="sign" id="signature"
+                                    type="file" class="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="position-relative form-check">
+                                <input name="statut" id="etat" type="checkbox" class="form-check-input">
+                                <label for="etat" class="form-label form-check-label">Etat</label>
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <div class="position-relative mb-3">
-                                <label for="exampleZip" class="form-label">Zip</label>
-                                <input name="zip" id="exampleZip" type="text" class="form-control">
+                            <div class="position-relative form-check">
+                                <input name="is_admin" id="adminfonct" type="checkbox" class="form-check-input">
+                                <label for="adminfonct" class="form-label form-check-label">Administrateur fonctionnel</label>
                             </div>
                         </div>
                     </div>
-                    <div class="position-relative form-check">
-                        <input name="check" id="exampleCheck" type="checkbox" class="form-check-input">
-                        <label for="exampleCheck" class="form-label form-check-label">Check me out</label>
+                    <div class="modal-footer clearfix">
+                        <button id="save-user" class="mb-2 me-2 btn-icon btn btn-primary btn-lg">
+                            Enregistrer
+                        </button>
+                        <button class="btn btn-secondary btn-lg">Appliquer</button>
+                        <div class="float-end">
+                            <button type="reset" class="btn btn-danger btn-lg">Annuler</button>
+                        </div>
                     </div>
-                    <button class="mt-2 btn btn-primary">Sign in</button>
+
                 </form>
             </div>
         </div>
@@ -102,3 +190,4 @@
 
 </div>
 @endsection
+

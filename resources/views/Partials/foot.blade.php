@@ -27,6 +27,7 @@
         <script type="text/javascript" src="{{asset('/js/tables.js')}}"></script>
         <script type="text/javascript" src="{{asset('/js/carousel-slider.js')}}"></script>
         <script type="text/javascript" src="{{asset('/js/app.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/js/choices.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('Auth/js/Application.js')}}"></script>
         <script type="text/javascript" src="{{asset('tabulator/js/xlsx.full.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('tabulator/js/jspdf.umd.min.js')}}"></script>
@@ -37,5 +38,9 @@
             <script type="text/javascript" src="{{asset('tabulator/js/utilisateur.js')}}"></script>
         @endif
         <script type="text/javascript" src="{{asset('Auth/js/sweetalert2.all.min.js')}}"></script>
+        <script>
+            const element = document.querySelector('.profiles');
+            const choices = new Choices(element);
+        </script>
     </body>
 </html>
