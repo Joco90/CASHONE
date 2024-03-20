@@ -50,36 +50,23 @@ document.getElementById("download-pdf-user").addEventListener("click", function(
     });
 });
 
-// function checkboxChange(id){
-//     statut=document.getElementById(id);
-//     label=document.getElementById('labStatut');
-//     if (statut.checked===true) {
-//         label.style.color="green";
-//         label.innerHTML="Activé";
-//         statut.value=1;
-//     }else{
-//         label.style.color="red";
-//         label.innerHTML="Désactivé";
-//         statut.value=0;
-//     }
-//     console.log(statut.value);
-// }
-// function formatterType(type){
-//     let val=type.getValue();
-//     let libelle;
-//     switch (val) {
-//         case 1: libelle='Administrateur système';
-//             break;
-//         case 2: libelle='Administrateur limité';
-//             break;
-//         case 3: libelle='Utilisateur standard';
-//             break;
 
-//         default:
-//             break;
-//     }
-//     return libelle;
-// }
+function formatterType(type){
+    let val=type.getValue();
+    let libelle;
+    switch (val) {
+        case 1: libelle='Administrateur système';
+            break;
+        case 2: libelle='Administrateur limité';
+            break;
+        case 3: libelle='Utilisateur standard';
+            break;
+
+        default:
+            break;
+    }
+    return libelle;
+}
 
 function formatterStatut(status){
     let statut=status.getValue();

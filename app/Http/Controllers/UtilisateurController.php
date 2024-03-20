@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
+use App\Mail\EnvoiPassword;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Default_Func\UserController;
+use Illuminate\Support\Facades\Mail;
 
 class UtilisateurController extends Controller
 {
@@ -42,42 +47,94 @@ class UtilisateurController extends Controller
 
     public function save(Request $request){
         $rules=[
+            'code'=> 'required|unique:utilisateur',
+            'initial'=> 'required|string',
+            'matricule'=> 'required|unique:utilisateur',
             'name'=> 'required|string',
-            'firstnames'=> 'required|string',
-            'email_pro'=> 'required|email|unique:utilisateurs',
-            'email_perso'=> 'nullable|email|unique:utilisateurs',
-            'telephone'=> 'required|numeric|digits:10|unique:utilisateurs',
-            'mobile'=> 'numeric|digits:10|unique:utilisateurs',
+            'firstname'=> 'required|string',
+            'email'=> 'required|email|unique:utilisateur',
+            'telephone'=> 'required|numeric|digits:10',
+            'mobile'=> 'required|numeric|digits:10|unique:utilisateur',
             'profile'=> 'required',
-
-
         ];
+
         $messages=[
-            'name.required' => 'Ce champs est obligatoire.',
+            'code.required' => 'le code utilisateur est obligatoire.',
+            'initial.required' => 'Initial utilisateur est obligatoire.',
+            'name.required' => 'le nom est obligatoire.',
             'name.string' => 'Nom invalide.',
-            'firstnames.required' => 'Ce champs est obligatoire.',
-            'firstnames.string' => 'Prénoms invalide.',
-            'email_pro.required' => 'Ce champs est obligatoire.',
-            'email_pro.email' => 'Adesse mail invalide.',
-            'email_pro.unique' => 'Cette adresse a déjà un compte.',
-            'email_perso.unique' => 'Cette adresse déjà dans notre système.',
-            'email_perso.email' => 'Email invalide',
-            'telephone.required' => 'Ce champs est obligatoire.',
+            'firstname.required' => 'Prénom est obligatoire.',
+            'firstname.string' => 'Prénoms invalide.',
+            'email.required' => 'adresse email est obligatoire.',
+            'email.email' => 'Adresse mail invalide.',
+            'matricule.unique' => 'Cet matricule a déjà un compte. Impossible de le créer plusieurs fois.',
+            'code.unique' => 'Cet code a déjà un compte. Impossible de le créer plusieurs fois.',
+            'email.unique' => 'Cette adresse a déjà un compte.',
+            'telephone.required' => 'Numéro de téléphone est obligatoire.',
             'telephone.numeric' => 'Numéro de téléphone invalide.',
             'telephone.digits' => 'Numéro de téléphone imcomplet.',
             'telephone.unique' => 'Ce numéro de téléphone existe déjà.',
-            'mobile.numeric' => 'Numéro de téléphone invalide.',
-            'mobile.digits' => 'Numéro de téléphone imcomplet.',
-            'mobile.unique' => 'Ce numéro de téléphone existe déjà.',
-            'profile.required' => 'Ce champs est oblogatoire.',
+            'mobile.numeric' => 'Numéro de téléphone mobile invalide.',
+            'mobile.digits' => 'Numéro de téléphone mobile imcomplet.',
+            'mobile.unique' => 'Ce numéro de téléphone mobile existe déjà.',
+            'mobile.required' => 'Numéro de téléphone mobile est oblogatoire.',
+            'profile.required' => 'Le profil est oblogatoire.',
 
         ];
 
         $validate=Validator::make($request->all(),$rules,$messages);
-        // dd($validate->errors);
+
         if ($validate->fails()) {
-            return response()->json(["messagealerte"=>"Oops! Une erreur détectée....","message"=>(array)$validate->errors()->messages(),"resultat"=>false]);
+            return response()->json(["message_return"=>(array)$validate->errors()->messages(),"resultat"=>false]);
         }
+        $function= new UserController;
+        $statut=$request->statut;
+        $is_admin=$request->is_admin;
+        $password_defautl=$function->password_default();
+        $datedujour=Carbon::now()->startOfDay();
+
+        switch ($statut) {
+            case 'on':
+                $statut=1;
+                break;
+            case 'off':
+                $statut=0;
+                break;
+        }
+
+        switch ($is_admin) {
+            case 'on':
+                $is_admin=1;
+                break;
+            case 'off':
+                $is_admin=0;
+                break;
+        }
+
+        User::create([
+            'code'=>$request->code,
+            'matricule'=>$request->matricule,
+            'name'=>$request->name,
+            'firstname'=>$request->firstname,
+            'profile'=>$request->profile,
+            'email'=>$request->email,
+            'telephone'=>$request->telephone,
+            'mobile'=>$request->mobile,
+            'date_password'=>$datedujour,
+            'default_password'=>Hash::make($password_defautl),
+            'statut'=>$request->statut,
+            'debut_activ'=>$datedujour,
+            'fin_activ'=>$request->fin_activ,
+            'statut'=>$statut,
+            'is_admin'=>$is_admin,
+            'initial'=>$request->initial,
+            'idjade'=>$request->idjade,
+            'auteur'=>Auth::user()->code,
+        ]);
+
+        Mail::to($request->email)->send(new EnvoiPassword($request->name,$request->email,$password_defautl));
+
+        return response()->json(["message_return"=>"Traitement effectué avec succès.","resultat"=>true]);
     }
 
     public function update(){

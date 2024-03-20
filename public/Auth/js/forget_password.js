@@ -55,7 +55,7 @@ $(document).ready(() => {
                     title: "Traitement effectué avec succès.",
                     html: `${data.message_return}`,
                     showConfirmButton: true,
-                    confirmButtonText:'<a href="/Auth/login">Ok</a>'
+                    confirmButtonText:'<a href="/">Ok</a>'
                   });
                 // $('#alert').addClass('alert-success')
 

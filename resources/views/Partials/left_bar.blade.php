@@ -449,90 +449,55 @@
                             <ul class="mm-show">
                                 <li>
                                     <a href="">
-                                        <i class="metismenu-icon"></i>
+                                        <i class="pe-7s-plus"></i>
                                         Importation bon LOGEB
                                     </a>
                                 </li>
                                 <li>
                                     <a href="">
-                                        <i class="metismenu-icon"></i>
+                                        <i class="pe-7s-plus"></i>
                                         Réception des borderaux
                                     </a>
                                 </li>
                                 <li>
                                     <a href="">
-                                        <i class="metismenu-icon"></i>
+                                        <i class="pe-7s-plus"></i>
                                         Transmission pour contrôle
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="elements-buttons-shadow.html">
-                                        <i class="metismenu-icon"></i>
-                                        Shadow
+                                    <a href="">
+                                        <i class="pe-7s-plus"></i>
+                                        Réception contrôle
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="elements-buttons-icons.html" class="mm-active">
-                                        <i class="metismenu-icon"></i>
-                                        With Icons
+                                    <a href="">
+                                        <i class="pe-7s-plus"></i>
+                                        Contrôle
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <i class="pe-7s-plus"></i>
+                                        Constitution borderaux
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <i class="pe-7s-plus"></i>
+                                        Génération de remises
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <i class="pe-7s-plus"></i>
+                                        Clôture de remises
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="elements-dropdowns.html">
-                                <i class="metismenu-icon"></i>
-                                Dropdowns
-                            </a>
-                        </li>
-                        <li>
-                            <a href="elements-icons.html">
-                                <i class="metismenu-icon"></i>
-                                Icons
-                            </a>
-                        </li>
-                        <li>
-                            <a href="elements-badges-labels.html">
-                                <i class="metismenu-icon"></i>
-                                Badges
-                            </a>
-                        </li>
-                        <li>
-                            <a href="elements-cards.html">
-                                <i class="metismenu-icon"></i>
-                                Cards
-                            </a>
-                        </li>
-                        <li>
-                            <a href="elements-loaders.html">
-                                <i class="metismenu-icon"></i>
-                                Loading Indicators
-                            </a>
-                        </li>
-                        <li>
-                            <a href="elements-list-group.html">
-                                <i class="metismenu-icon"></i>
-                                List Groups
-                            </a>
-                        </li>
-                        <li>
-                            <a href="elements-navigation.html">
-                                <i class="metismenu-icon"></i>
-                                Navigation Menus
-                            </a>
-                        </li>
-                        <li>
-                            <a href="elements-timelines.html">
-                                <i class="metismenu-icon"></i>
-                                Timeline
-                            </a>
-                        </li>
-                        <li>
-                            <a href="elements-utilities.html">
-                                <i class="metismenu-icon"></i>
-                                Utilities
-                            </a>
-                        </li>
+                        
                     </ul>
                 </li>
                 <li class="app-sidebar__heading">Règlements</li>

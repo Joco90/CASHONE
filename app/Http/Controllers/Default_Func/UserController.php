@@ -46,7 +46,7 @@ class UserController extends Controller
     public function password_default(){
         $nbr=0;
         $init=str::random(1);
-        for ($i=1; $i <6 ; $i++) {
+        for ($i=1; $i <7 ; $i++) {
             $nbr.=random_int(0,9);
         }
         $password_defautl=$nbr.strtoupper($init);

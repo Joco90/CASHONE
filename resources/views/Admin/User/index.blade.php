@@ -16,7 +16,6 @@
                     </div>
                     <div class="page-title-actions">
 
-
                     </div>
                 </div>
             </div>
