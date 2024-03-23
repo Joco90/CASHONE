@@ -256,7 +256,7 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="">
+                            <a href="{{ url('/code-operation/nature-comptable') }}">
                                 <i class="pe-7s-plus"></i>
                                 Natures comptables
                             </a>

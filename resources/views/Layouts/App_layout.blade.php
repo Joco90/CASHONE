@@ -17,6 +17,8 @@
     @include('Modals.edit-profile')
     {{-- @include('Modals.create-user') --}}
 @endif
+@include('code-operation.nature-compt.modal.nouveau-code')
+@include('code-operation.nature-compt.modal.edit-code')
 
 
 

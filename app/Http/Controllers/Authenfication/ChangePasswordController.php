@@ -47,7 +47,7 @@ class ChangePasswordController extends Controller
             $user->is_admin=1;
             $user->save();
 
-            return redirect('dashboard/panel');
+            return redirect('/panel');
 
         }else return redirect()->back()->withErrors("Le mot de passe par défaut est incorrect. Vueillez rééssayer plutard.");
     }

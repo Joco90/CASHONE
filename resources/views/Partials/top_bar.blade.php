@@ -569,7 +569,7 @@
                                 <div class="widget-content-left">
                                     <div class="btn-group">
                                         <a data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
-                                            <img width="42" class="rounded-circle" src="images/avatars/1.jpg" alt="">
+                                            {{-- <img width="42" class="rounded-circle" src="images/avatars/1.jpg" alt=""> --}}
                                             <i class="fa fa-angle-down ms-2 opacity-8"></i>
                                         </a>
                                         <div tabindex="-1" role="menu" aria-hidden="true"
@@ -581,8 +581,8 @@
                                                         <div class="widget-content p-0">
                                                             <div class="widget-content-wrapper">
                                                                 <div class="widget-content-left me-3">
-                                                                    <img width="42" class="rounded-circle"
-                                                                        src="{{asset('images/avatars/1.jpg')}}"  alt="">
+                                                                    {{-- <img width="42" class="rounded-circle"
+                                                                        src="{{asset('images/avatars/1.jpg')}}"  alt=""> --}}
                                                                 </div>
                                                                 <div class="widget-content-left">
                                                                     <div class="widget-heading">Alina Mcloughlin</div>
@@ -620,7 +620,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="widget-content-left  ms-3 header-user-info">
+                                {{-- <div class="widget-content-left  ms-3 header-user-info">
                                     <div class="widget-heading"> Alina Mclourd</div>
                                     <div class="widget-subheading"> VP People Manager</div>
                                 </div>
@@ -628,17 +628,17 @@
                                     <button type="button" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
                                         <i class="fa text-white fa-calendar pe-1 ps-1"></i>
                                     </button>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
-                    <div class="header-btn-lg">
+                    {{-- <div class="header-btn-lg">
                         <button type="button" class="hamburger hamburger--elastic open-right-drawer">
                             <span class="hamburger-box">
                                 <span class="hamburger-inner"></span>
                             </span>
                         </button>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
