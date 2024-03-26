@@ -71,7 +71,7 @@
                     </button>
                 </li>
                 <li class="nav-item">
-                    <button id="btn-modif-profile" data-bs-toggle="modal" data-bs-target=".modifier" class="mb-2 me-2 btn-icon btn btn-secondary" >
+                    <button id="btn-modif-profile" class="mb-2 me-2 btn-icon btn btn-secondary" >
                         <i class="nav-link-icon pe-7s-note"></i> Modifier
                     </button>
                 </li>
@@ -100,7 +100,7 @@
                     <table class="mb-0 table table-striped">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th> <label for="selectAll"> <input type="checkbox"  onClick="toggle(this)"  ></label></th>
                                 <th>Code</th>
                                 <th>Libellé</th>
                                 {{-- <th>Username</th> --}}
@@ -112,13 +112,16 @@
                                     <th scope="row">
                                         <div class="position-relative form-check">
                                             <label class="form-label form-check-label">
-                                                <input type="checkbox" class="form-check-input">
+                                                <input type="checkbox" name="code[]"  class="form-check-input code" value="{{ $listeNature->id }}">
                                                
                                             </label>
                                         </div>
                                     </th>
                                     <td>{{ $listeNature->code_cn }}</td>
-                                    <td>{{ $listeNature->libelle }}</td>
+                                    <input value="{{ $listeNature->code_cn}}" id="code_cn{{ $listeNature->id }}" hidden>
+                                    <td>{{ $listeNature->libelle}}</td>
+                                    <input value="{{ $listeNature->libelle }}" id="libelle{{ $listeNature->id }}" hidden>
+
                                     {{-- <td>@mdo</td> --}}
                                 </tr>
                             @endforeach
@@ -168,6 +171,72 @@
             
 
 @endsection
+
+
+<script type="text/javascript" src="{{asset('/vendors/jquery/dist/jquery.min.js')}}"></script>
+    
+    <script>
+    function toggle(source)
+     {
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i] != source)
+                checkboxes[i].checked = source.checked;
+        }
+     }
+
+    $(document).ready(function(){
+    
+        console.log("code");
+    
+  
+
+    
+
+    
+    $('#btn-modif-profile').click(function (e) {
+        
+                var code=[];
+                $('.code:checked').each(function() {
+                    code.push($(this).val()); // Ajouter la valeur à notre tableau
+                });
+                console.log(code);
+                if (code.length==0) 
+                {
+                    Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Vous n avez choisir auccun enregistrement !!!",
+                    // footer: '<a href="#">Why do I have this issue?</a>'
+                    });
+                    return false;
+                }else if(code.length>1)
+                {
+                    Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Vous ne pouvez que choisir un compte !!!",
+                    // footer: '<a href="#">Why do I have this issue?</a>'
+                    });
+                    return false;
+                }
+
+                console.log(code[0]);
+                var id=code[0];
+                var code_cn=$("#code_cn"+id).val();
+                var libelle=$("#libelle"+id).val();
+                console.log(code_cn);
+                libelle_input
+                $("#code_input").val(code_cn);
+                $("#libelle_input").val(libelle);
+                $("#id_input").val(id);
+
+                $(".modifier").modal("show");
+               
+            });
+    
+    });
+    </script>
 
 
 

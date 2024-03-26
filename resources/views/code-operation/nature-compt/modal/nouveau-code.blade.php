@@ -8,43 +8,43 @@ aria-labelledby="myLargeModalLabel" aria-hidden="true">
         </button>
     </div>
     <form id="code-form" method="POST">
-    <div class="modal-body">
-       
-            @csrf
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="position-relative mb-3">
-                        <label class="form-label" for="code">Code </label>
-                        <input  name="code" id="code" maxlength="4" minlength="4"
-                            placeholder="Code profile"
-                            type="text" class="form-control">
-                            <small class="form-text text-muted" id="codeerror"></small>
+        <div class="modal-body">
+        
+                @csrf
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="position-relative mb-3">
+                            <label class="form-label" for="code">Code </label>
+                            <input  name="code" id="code" maxlength="4" minlength="4"
+                                placeholder="Code profile"
+                                type="text" class="form-control">
+                                <small class="form-text text-muted" id="codeerror"></small>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="position-relative mb-3">
-                        <label class="form-label" for="libelle">Libellé (*)</label>
-                        <input name="libelle" id="libelle"
-                            placeholder="description du profile"
-                            type="text" class="form-control">
-                            <small class="form-text text-muted" id="libelleerror"></small>
+                    <div class="col-md-6">
+                        <div class="position-relative mb-3">
+                            <label class="form-label" for="libelle">Libellé (*)</label>
+                            <input name="libelle" id="libelle"
+                                placeholder="description du profile"
+                                type="text" class="form-control">
+                                <small class="form-text text-muted" id="libelleerror"></small>
+                        </div>
                     </div>
+                
                 </div>
-              
-            </div>
-            {{-- <div class="modal-footer">
-                <button type="submit" onclick="clickbtn()" id="btn_save" class="btn btn-primary">Enregistrer le profile</button>
-                <button type="submit" onclick="_applique()" id="btn_application" class="btn btn-secondary">Appliquer</button>
-                <button type="button" id="btn_close" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+                {{-- <div class="modal-footer">
+                    <button type="submit" onclick="clickbtn()" id="btn_save" class="btn btn-primary">Enregistrer le profile</button>
+                    <button type="submit" onclick="_applique()" id="btn_application" class="btn btn-secondary">Appliquer</button>
+                    <button type="button" id="btn_close" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
 
-            </div> --}}
-       
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" id="enregistrer-code-comptable"  class="btn btn-primary">Enregistrer</button>
-    </div>
-</form>
+                </div> --}}
+        
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" id="enregistrer-code-comptable"  class="btn btn-primary">Enregistrer</button>
+        </div>
+    </form>
 </div>
 </div>
 </div>

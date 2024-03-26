@@ -60,4 +60,45 @@ class NatureComptableController extends Controller
         ], 200);   
 
     }
+
+    public function editNatureCompt(Request $request)
+    {
+        $datas=$request->all();
+        Log::info(json_encode($datas));
+
+        $messages = [
+            'marchand.required' => 'Le marchand est obligatoire ',
+            'montant.required' => 'Le montant est obligatoire ',
+            'client.required' => 'Le client est obligatoire ',
+           
+    
+        ];
+    
+        $validator =  Validator::make($request->all(), [
+           
+            'code_input' => 'required|max:4',
+            'libelle_input' => 'required',
+          
+            
+        ],$messages);
+    
+        if ($validator->fails()) {
+            return response()->json([
+                "code"=>0,
+                "data"=>null,
+                "message"=>"les parametre sont inccorecte",
+            ], 200);
+        }
+
+        $natureCompte=  NatureComptable::find($request->id);
+        $natureCompte->code_cn=$request->code_input;
+        $natureCompte->libelle=$request->libelle_input;
+        $natureCompte->save();
+        return response()->json([
+            "code"=>200,
+            "data"=>$natureCompte,
+            "message"=>'Code modifié avec succès',
+        ], 200);   
+
+    }
 }
