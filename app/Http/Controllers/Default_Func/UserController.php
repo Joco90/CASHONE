@@ -22,7 +22,7 @@ class UserController extends Controller
             'name'=>'Utilisateur',
             'firstname'=>'Système',
             'profile'=>$id,
-            'email'=>'joel.gompewo@mentall.net',
+            'email'=>'jocoalarson90@gmail.com',
             'telephone'=>'2733727543',
             'mobile'=>'0707068084',
             'default_password'=>Hash::make($password_defautl),
