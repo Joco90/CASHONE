@@ -21,4 +21,11 @@
         <link href="{{asset('tabulator/css/tabulator.min.css')}}" rel="stylesheet">
         <link href="{{asset('Auth/css/sweetalert2.min.css')}}" rel="stylesheet">
         <link href="{{asset('styles/css/choices.min.css')}}" rel="stylesheet">
+
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.1/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.1/dist/js/select2.min.js"></script>
+        {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
+        
+        <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>

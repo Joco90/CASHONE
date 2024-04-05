@@ -54,7 +54,8 @@ aria-labelledby="myLargeModalLabel" aria-hidden="true">
     
     <script>
     
-    $(document).ready(function(){
+    $(document).ready(function()
+    {
     
     
     
@@ -63,7 +64,8 @@ aria-labelledby="myLargeModalLabel" aria-hidden="true">
     
 
     
-    $('#enregistrer-code-comptable').click(function (e) {
+             $('#enregistrer-code-comptable').click(function (e)
+              {
                 //  alert($('#contrat').prop('files'));
                 e.preventDefault()
                 // $('#modal-transfert-ria').modal('hide')
