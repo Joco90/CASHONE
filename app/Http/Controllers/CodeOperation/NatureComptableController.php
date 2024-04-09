@@ -35,7 +35,7 @@ class NatureComptableController extends Controller
     
         $validator =  Validator::make($request->all(), [
            
-            'code' => 'required|max:4',
+            'code' => 'required|max:4|unique:nature_cp,code_cn',
             'libelle' => 'required',
           
             
@@ -91,8 +91,15 @@ class NatureComptableController extends Controller
         }
 
         $natureCompte=  NatureComptable::find($request->id);
-        $natureCompte->code_cn=$request->code_input;
-        $natureCompte->libelle=$request->libelle_input;
+        if (!is_null($request->code_input)) {
+            $natureCompte->code_cn=$request->code_input;
+        }
+
+        if (!is_null($request->libelle_input)) {
+            $natureCompte->libelle=$request->libelle_input;
+        }
+       
+        
         $natureCompte->save();
         return response()->json([
             "code"=>200,

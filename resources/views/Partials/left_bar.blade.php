@@ -262,7 +262,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="{{ url('/code-operation/liste-correspondance') }}">
                                 <i class="pe-7s-plus"></i>
                                Correspondance CN - Comptabilité
                             </a>

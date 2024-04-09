@@ -32,6 +32,10 @@
         <script type="text/javascript" src="{{asset('tabulator/js/xlsx.full.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('tabulator/js/jspdf.umd.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('tabulator/js/jspdf.plugin.autotable.min.js')}}"></script>
+        <script type="text/javascript" src="{{ asset("/vendors/select2/dist/js/select2.min.js") }}"></script>
+        <script type="text/javascript" src="{{ asset("/vendors/@atomaras/bootstrap-multiselect/dist/js/bootstrap-multiselect.js") }}"></script>
+        <script type="text/javascript" src="{{ asset("/js/form-components/toggle-switch.js") }}"></script>
+        <script type="text/javascript" src="{{ asset("/js/form-components/input-select.js") }}"></script>
         @if (Route::is(['profile','users.liste']))
             <script type="text/javascript" src="{{asset('tabulator/js/tabulator.min.js')}}"></script>
             <script type="text/javascript" src="{{asset('tabulator/js/profile.js')}}"></script>
@@ -42,5 +46,6 @@
             const element = document.querySelector('.profiles');
             const choices = new Choices(element);
         </script>
+        
     </body>
 </html>
