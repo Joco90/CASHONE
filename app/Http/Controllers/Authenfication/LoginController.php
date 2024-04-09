@@ -42,21 +42,21 @@ class LoginController extends Controller
     public function login(Request $request){
 
         $rules=[
-            'email'=> 'required|email',
+            'code'=> 'required|string',
             'password'=> 'required',
         ];
         $messages=[
-            'email.required' => 'Ce champs est obligatoire.',
-            'email.email' => 'Addresse mail invalide!',
+            'code.required' => 'Ce champs est obligatoire.',
+            'code.string' => 'Code invalide!',
             'password.required' => 'Ce champs est obligatoire.',
         ];
 
         $validate=Validator::make($request->all(),$rules,$messages);
         if ($validate->fails()) {
-            return redirect('/')->withErrors($validate);
+            return redirect()->back()->withErrors($validate);
         }
 
-        $user=User::Where('email',$request->email)->first();
+        $user=User::Where('code',$request->code)->first();
         if ($user) {
             if ($user->password==null) {
                 if (Hash::check($request->get('password'), $user->default_password)) {
@@ -70,7 +70,7 @@ class LoginController extends Controller
             }else{
                 if (Hash::check($request->get('password'), $user->password)) {
                     Auth::guard()->login($user);
-                    return redirect('/panel');
+                    return redirect('/cashone/panel');
                 }else return redirect()->back()->withErrors("Le mot de passe est incorrect.");
 
             }
@@ -88,7 +88,7 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('Auth/login');
     }
 
 

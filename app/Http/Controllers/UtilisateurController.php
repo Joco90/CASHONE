@@ -132,21 +132,40 @@ class UtilisateurController extends Controller
             'auteur'=>Auth::user()->code,
         ]);
 
-        Mail::to($request->email)->send(new EnvoiPassword($request->name,$request->email,$password_defautl));
+        Mail::to($request->email)->send(new EnvoiPassword($request->name,$request->code,$password_defautl));
 
         return response()->json(["message_return"=>"Traitement effectué avec succès.","resultat"=>true]);
     }
 
-    public function update(){
+    public function edit($id){
+        $_title="Cashone | Gestion des utilisateurs";
+        $user=User::where('id',$id)->first();
+        // dd($user->profilelibelle->libelle);
+        $profil=Profile::Where('statut',1)->get();
+        if($user){
+            return view('Admin.User.edit-user',["users"=>$user,"profils"=>$profil,"title"=>$_title]);
+        }else{
+            return redirect()->back()->with(array('error'=>'Utilisateur introuvable!'));
+        }
+    }
+
+    public function update(Request $request){
+
 
     }
 
     public function resetPassword(){
-
+        $id=$_POST['user'];
     }
 
-    public function destroy(){
+    public function destroy($id){
 
+        $delUser=User::find($id);
+        if($delUser){
+            $delUser->statut=0;
+            $delUser->save();
+            return redirect('/liste-users');
+        }
     }
 
 

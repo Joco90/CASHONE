@@ -6,19 +6,19 @@
                 <div class="h-100 g-0 row">
                     <div class="h-100 d-md-flex d-sm-block bg-white justify-content-center align-items-center col-md-12 col-lg-12">
                         <div class="mx-auto app-login-box col-sm-12 col-md-10 col-lg-9">
-                            <img src="/images/cie.png" 
+                            <img src="/images/cie.png"
                             style="width:114px;
-                         
+
                            gap: 0px;
                            border-radius: 15px 0px 0px 0px;
                            opacity: 0px;
                            "  alt="" class="img-fluid d-block">
                             <h4>
                                 <div>Bienvenu,</div>
-                                <span>Sur 
-                                    <span class="text-success">CASH-ONE</span> Une application innovante</span>
+                                <span>Sur
+                                    <span class="text-success">CASHONE</span> Une application innovante</span>
                             </h4>
-                           
+                            <em style="color:red">Cette application est en cours de développement!</em>
                         </div>
                     </div>
                     {{-- <div class="d-lg-flex d-xs-none col-lg-5">

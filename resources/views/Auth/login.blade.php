@@ -20,15 +20,21 @@
                         <div class="col-md-12">
                             <div class="position-relative mb-3">
                                 <label class="form-label" for="codeUtilisateur">Code utilisateur</label>
-                                <input name="email" id="codeUtilisateur"
-                                    placeholder="Code utilisateur ici..." type="email" class="form-control">
+                                <input name="code" id="codeUtilisateur"
+                                 type="text" value="{{old('code')}}" class="form-control {{$errors->has('code') ? ' is-invalid' : '' }}">
+                                 @if ($errors->has('code'))
+                                 <div class="invalid-feedback">{{ $errors->first('code') }}</div>
+                                 @endif
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="position-relative mb-3">
                                 <label class="form-label" for="Password">Mot de passe</label>
                                 <input name="password" id="Password"
-                                    placeholder="Mot de passe ici..." type="password" class="form-control">
+                                 type="password" class="form-control {{$errors->has('password') ? ' is-invalid' : '' }}">
+                                 @if ($errors->has('password'))
+                                 <div class="invalid-feedback">{{ $errors->first('password') }}</div>
+                                 @endif
                             </div>
                         </div>
                     </div>
@@ -40,13 +46,10 @@
                         <div class="float-start">
                             <button type="submit" class="btn btn-success btn-lg"> CONNEXION AU PANEL</button>
                         </div>
-                        {{-- <div class="float-end">
-                            <button class="btn btn-primary btn-lg">Login to Dashboard</button>
-                        </div> --}}
+
                     </div>
                 </form>
-                {{-- <div class="divider"></div> --}}
-
+               
             </div>
 
         </div>

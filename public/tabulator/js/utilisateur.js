@@ -9,34 +9,48 @@ var tableUser = new Tabulator("#user-table", {
       {formatter:"rowSelection", titleFormatter:"rowSelection", hozAlign:"center", headerSort:false, cellClick:function(e, cell){
         cell.getRow().toggleSelect();
       },width:20},
-      {title:"Profile", field:"profile", hozAlign:"center"},
+      {title:"Profile", field:"profile", hozAlign:"center",visible:false},
       {title:"Id utilisateur", field:"code", hozAlign:"center"},
       {title:"Nom", field:"name", hozAlign:"center"},
       {title:"Prénoms", field:"firstname", hozAlign:"center"},
       {title:"Matricule", field:"matricule", hozAlign:"center"},
       {title:"Adresse mail", field:"email", hozAlign:"center"},
       {title:"Téléphone", field:"telephone", hozAlign:"center"},
-      {title:"Mobile", field:"mobile", hozAlign:"center"},
+      {title:"Mobile", field:"mobile", hozAlign:"center",visible:false},
       {title:"Bloc", field:"bloc",visible:false},
       {title:"date_bloc", field:"date_bloc", sorter:"date",formatter:(cell)=>{
         let val = cell.getValue();
         return `${moment(val).format('DD/MM/YYYY')}`
-      }},
-      {title:"Motif_bloc", field:"motif_bloc"},
+      },visible:false},
+      {title:"Motif_bloc", field:"motif_bloc",visible:false},
       {title:"statut", field:"statut",visible:false},
       {title:"debut_activ", field:"debut_activ",visible:false},
       {title:"fin_activ", field:"fin_activ",visible:false},
-      {title:"Initial", field:"initial"},
-      {title:"Idjade", field:"idjade"},
+      {title:"Initial", field:"initial",visible:false},
+      {title:"Idjade", field:"idjade",visible:false},
       {title:"créer le", field:"created_at", hozAlign:"center", sorter:"date",formatter:(cell)=>{
         let val = cell.getValue();
         return `${moment(val).format('DD/MM/YYYY')}`
-      }},
-      {title:"Action",field:"id", visible:false},
+      },visible:false},
+      {title:"Action",field:"id",formatter:formatterbtn},
     ],
     ajaxURL: "/api/liste-users",
     layout:"fitColumns"
 });
+
+function formatterbtn(cel){
+    let value=cel.getValue();
+
+    return `<a href="gestion-des-utilisateurs/del-user/${value}" class="btn btn-danger btn-sm" title="Supprimer">
+    <i class="pe-7s-trash btn-icon-wrapper"></i>
+    </a>
+    <a href="gestion-des-utilisateurs/edit-user/${value}" class="btn btn-secondary btn-sm" title="Modifier">
+    <i class="pe-7s-pen btn-icon-wrapper"></i>
+    </a>
+    <a href="gestion-des-utilisateurs/details-user/${value}" class="btn btn-info btn-sm" title="Etat">
+    <i class="pe-7s-menu btn-icon-wrapper"></i>
+    </a>`;
+}
 
 document.getElementById("download-xlsx-user").addEventListener("click", function(){
     tableUser.download("xlsx", "Liste-utilisateur.xlsx", {sheetName:"My Data"});
@@ -82,32 +96,35 @@ function actualiser(){
 
 
 document.getElementById("btn-modif-user").addEventListener("click", function(){
-    let profile=tableUser.getSelectedData();
-    if(profile.length==0){
+    let user=tableUser.getSelectedData();
+
+    if(user.length==0){
         Swal.fire({
             icon:"error",
             title: "Oops,Erreur détectée.",
             text: "Aucune ligne n'a été sélectionnée pour cette opération!",
             });
     }else{
-        formMod=document.getElementById("user-form-edit");
-        formMod.code.value=profile[0]['code'];
-        formMod.code.setAttribute('disabled',true);
-        formMod.id.value=profile[0]['id'];
-        formMod.libelle.value=profile[0]['libelle'];
-        formMod.type.value=profile[0]['type'];
-        formMod.statut.value=profile[0]['statut'];
+        let user_id=user[0]['id'];
+        console.log(user_id);
+        $.get("/edit-user",
+                {
+                    id:user_id,
+                },function(data){
+                    if(data.resultat==false){
+                        Swal.fire({
+                            icon:"error",
+                            title: "Oops,Erreur détectée.",
+                            text: `${data.message_return}`,
+                            });
+                    }
+            }).fail((done)=>{
 
-        if(formMod.statut.value!==0){
-            formMod.statut.checked=true;
-        }else formMod.statut.checked=false;
-        console.log(formMod.statut.value)
-        console.log(formMod.statut)
-        $('#user-profile').modal('show');
+                console.log(done)
+            });
     }
-
-    console.log(profile.length);
 });
+
 
 $('#del-user').submit(function(e){
         e.preventDefault()
@@ -180,199 +197,6 @@ $('#del-user').submit(function(e){
 }
 
 });
-// Form Validation
-function clickbtn(){
-
-    $("#profile-form").validate({
-        rules: {
-        code: {
-            required: true,
-        },
-        libelle:{
-            required:true,
-        },
-        type:{
-            required:true,
-            Number:false,
-        },
-        _token:{required: true,},
-        },
-        messages: {
-        code: "Veuillez saisir un code valide.",
-        libelle: "Veuillez saisir un libellé valide.",
-        type: "Veuillez sélectionné un type valide.",
-        _token:"clé de notre réquête est absente.",
-        },
-        errorElement: "em",
-        errorPlacement: function (error, element) {
-        // Add the `invalid-feedback` class to the error element
-        error.addClass("invalid-feedback");
-            error.insertAfter(element);
-        },
-        highlight: function (element, errorClass, validClass) {
-        $(element).addClass("is-invalid").removeClass("is-valid");
-        },
-        unhighlight: function (element, errorClass, validClass) {
-        $(element).addClass("is-valid").removeClass("is-invalid");
-        },
-        submitHandler: function(form) {
-        $('#btn_save').html('Enregistrement en cours...')
-        $('#btn_save').attr('disabled',true)
-            console.log( form.libelle.value)
-        $.post("/save-profile",
-        {
-            "_token": form._token.value,
-            code: form.code.value,
-            libelle: form.libelle.value,
-            type: form.type.value,
-        },
-        function(data){
-            // console.log(data)
-            $('#btn_save').html('Enregistrer le profile')
-            $('#btn_save').attr('disabled',false)
-            if(data.resultat==false){
-                Swal.fire({
-                    icon:"error",
-                    title: "Oops, une erreur est survenue!",
-                    text: `${data.message_return}`,
-                    // footer: '<a href="/Auth/login">Voulez-vous aller à page de connexion</a>'
-                    });
-
-            }else{
-                $('.bd-example-modal-lg').modal('hide');
-                Swal.fire({
-                    icon: "success",
-                    title: "Enregistrement de profile.",
-                    html: `${data.message_return}`,
-                    showConfirmButton: true,
-                    });
-                    form.type.value=""
-                    form.code.value=""
-                    form.libelle.value=""
-
-            }
-            actualiser()
-                // console.log(data);
-        });
-
-        },
-
-    });
-
-}
-
-function _applique(){
-    $("#profile-form").validate({
-        rules: {
-        code: {
-            required: true,
-        },
-        libelle:{
-            required:true,
-        },
-        type:{
-            required:true,
-            Number:false,
-        },
-        _token:{required: true,},
-        },
-        messages: {
-        code: "Veuillez saisir un code valide.",
-        libelle: "Veuillez saisir un libellé valide.",
-        type: "Veuillez sélectionné un type valide.",
-        _token:"clé de notre réquête est absente.",
-        },
-        errorElement: "em",
-        errorPlacement: function (error, element) {
-        // Add the `invalid-feedback` class to the error element
-        error.addClass("invalid-feedback");
-            error.insertAfter(element);
-        },
-        highlight: function (element, errorClass, validClass) {
-        $(element).addClass("is-invalid").removeClass("is-valid");
-        },
-        unhighlight: function (element, errorClass, validClass) {
-        $(element).addClass("is-valid").removeClass("is-invalid");
-        },
-        submitHandler: function(form) {
-        $('#btn_application').html('Enregistrement en cours...')
-        $('#btn_application').attr('disabled',true)
-            // console.log( form.libelle.value)
-        $.post("/save-profile",
-        {
-            "_token": form._token.value,
-            code: form.code.value,
-            libelle: form.libelle.value,
-            type: form.type.value,
-        },
-        function(data){
-            // console.log(data)
-            $('#btn_application').html('Appliquer')
-            $('#btn_application').attr('disabled',false)
-            if(data.resultat==false){
-                 $('#alert').addClass('alert-danger')
-
-                 $('#alert').html(`<div class="font-weight-bold">Oops! Une erreur détectée.....</div>
-                 <ul class="mb-0">${data.message_return}</ul>
-                 </div>`)
-
-            }else{
-
-                $('#alert').addClass('alert-success')
-                $('#alert').html(`<div class="font-weight-bold">${data.message_return}</div>`)
-
-                form.type.value=""
-                form.code.value=""
-                form.libelle.value=""
-                actualiser()
-            }
-                console.log(data);
-        });
-
-        },
-
-    });
-
-}
-
-function editProfile(){
-    formEdit=document.getElementById("profile-form-edit");
-    $('#btn_edit').html('Traitement en cours...')
-    $('#btn_edit').attr('disabled',true)
-
-    $.post("/edit-profile",
-        {
-            "_token": formEdit._token.value,
-            code: formEdit.code.value,
-            libelle: formEdit.libelle.value,
-            type: formEdit.type.value,
-            statut: formEdit.statut.value,
-        },
-        function(data){
-            // console.log(data)
-            $('#btn_edit').html('Enregistrer la modification')
-            $('#btn_edit').attr('disabled',false)
-            $('#edit-profile').modal('hide');
-            // console.log(data);
-            if(data.resultat==false){
-
-                Swal.fire({
-                    title: "OOp, Erreur détectée!",
-                    text: `${data.message_return}`,
-                    icon: "error"
-                  });
-            }else{
-
-                Swal.fire({
-                    title: "Succès!",
-                    text: `${data.message_return}`,
-                    icon: "success"
-                  });
-                actualiser()
-            }
-                // console.log(data);
-        });
-}
 
 function destroyProfile(){
 

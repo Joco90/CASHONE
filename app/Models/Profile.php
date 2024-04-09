@@ -13,4 +13,6 @@ class Profile extends Model
     protected $fillable = [
         'id','code','libelle','type','auteur','statut',
     ];
+
+  
 }

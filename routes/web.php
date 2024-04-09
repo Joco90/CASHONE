@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('Auth.login');
-// });
+ Route::get('/', function () {
+     return redirect('Auth/login');
+ });
 
 
 
-Route::get('/','Authenfication\LoginController@index')->name('login');
+Route::get('Auth/login','Authenfication\LoginController@index')->name('login');
     Route::post('/authentification','Authenfication\LoginController@login')->name('Auth.connexion');
     Route::get('/forget-password','Authenfication\ForgetPasswordController@index')->name('Auth.forget');
 
@@ -30,7 +30,7 @@ Route::group(['middleware' => 'auth'], function (){
     Route::post('/logout','Authenfication\LoginController@logout')->name('Auth.logout');
 
     //Tableau de bord
-    Route::get('/panel','Dashboard\DashboardController@index')->name('panel');
+    Route::get('/cashone/panel','Dashboard\DashboardController@index')->name('panel');
     // Profile
     Route::post('/save-profile','Admin\ProfileController@createProfile')->name("save-profile");
     Route::get('/profile','Admin\ProfileController@index')->name('profile');
@@ -42,4 +42,8 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('/liste-users','UtilisateurController@index')->name('users.liste');
     Route::get('/user-create','UtilisateurController@create')->name('users.create');
     Route::post('/user-save','UtilisateurController@save')->name('users.save');
+    Route::get('/del-user/{ref}','UtilisateurController@destroy')->name('users.del');
+    Route::get('gestion-des-utilisateurs/edit-user/{ref}','UtilisateurController@edit')->name('users.edit');
+    Route::get('gestion-des-utilisateurs/details-user/{ref}','UtilisateurController@detail')->name('users.detail');
+    Route::post('gestion-des-utilisateurs/update-user','UtilisateurController@update')->name('users.update');
 });
