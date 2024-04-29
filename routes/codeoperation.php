@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CodeOperation\CorrespondNatureController;
 use App\Http\Controllers\CodeOperation\NatureComptableController;
+use App\Http\Controllers\CodeOperation\TypeContratController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -18,8 +19,10 @@ Route::group(['middleware' => 'auth'], function (){
     Route::post('/get-code-compta', [CorrespondNatureController::class,'getCodeInfo'])->name('get-code-compta');
     Route::post('/save-correspondance-compta', [CorrespondNatureController::class,'saveCorrespond'])->name('save-correspondance-compta');
 
-    
-    
-    
-    
+    Route::get('/type-contrat',[TypeContratController::class,'index'])->name('typeContrat.liste');
+
+
+
+
+
 });

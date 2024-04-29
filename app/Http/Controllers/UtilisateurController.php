@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Profile;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
@@ -150,7 +149,65 @@ class UtilisateurController extends Controller
     }
 
     public function update(Request $request){
+        $rules=[
+            'initial'=> 'required|string',
+            'name'=> 'required|string',
+            'firstname'=> 'required|string',
+            'profile'=> 'required',
+        ];
 
+        $messages=[
+            'initial.required' => 'Initial utilisateur est obligatoire.',
+            'name.required' => 'le nom est obligatoire.',
+            'name.string' => 'Nom invalide.',
+            'firstname.required' => 'Prénom est obligatoire.',
+            'firstname.string' => 'Prénoms invalide.',
+            'profile.required' => 'Le profil est oblogatoire.',
+
+        ];
+
+        $validate=Validator::make($request->all(),$rules,$messages);
+
+        if ($validate->fails()) {
+            return redirect()->back()->withErrors($validate);
+        }
+
+        $statut=$request->statut;
+        $is_admin=$request->is_admin;
+
+        switch ($statut) {
+            case 'on':
+                $statut=1;
+                break;
+            case 'off':
+                $statut=0;
+                break;
+        }
+
+        switch ($is_admin) {
+            case 'on':
+                $is_admin=1;
+                break;
+            case 'off':
+                $is_admin=0;
+                break;
+        }
+
+        $upUser=User::Where('code',$request->code)->first();
+        // dd($request);
+        if ($upUser) {
+            $upUser->initial=$request->initial;
+            $upUser->idjade=$request->idjade;
+            $upUser->fin_activ=$request->fin_activ;
+            $upUser->profile=$request->profile;
+            $upUser->name=$request->name;
+            $upUser->firstname=$request->firstname;
+            $upUser->statut=$statut;
+            $upUser->is_admin=$is_admin;
+            $upUser->save();
+            return redirect('/gestion-des-utilisateurs/liste-users');
+        }else return redirect()->back()->
+        withErrors("L\'utilisateur introuvable! \n Veuillez contacter l\'administrateur.");
 
     }
 
@@ -164,7 +221,7 @@ class UtilisateurController extends Controller
         if($delUser){
             $delUser->statut=0;
             $delUser->save();
-            return redirect('/liste-users');
+            return redirect('/gestion-des-utilisateurs/liste-users');
         }
     }
 

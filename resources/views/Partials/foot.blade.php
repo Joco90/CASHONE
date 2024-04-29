@@ -28,24 +28,26 @@
         <script type="text/javascript" src="{{asset('/js/carousel-slider.js')}}"></script>
         <script type="text/javascript" src="{{asset('/js/app.js')}}"></script>
         <script type="text/javascript" src="{{asset('/js/choices.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset('Auth/js/Application.js')}}"></script>
-        <script type="text/javascript" src="{{asset('tabulator/js/xlsx.full.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset('tabulator/js/jspdf.umd.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/Auth/js/Application.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/tabulator/js/xlsx.full.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/tabulator/js/jspdf.umd.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('tabulator/js/jspdf.plugin.autotable.min.js')}}"></script>
         <script type="text/javascript" src="{{ asset("/vendors/select2/dist/js/select2.min.js") }}"></script>
         <script type="text/javascript" src="{{ asset("/vendors/@atomaras/bootstrap-multiselect/dist/js/bootstrap-multiselect.js") }}"></script>
         <script type="text/javascript" src="{{ asset("/js/form-components/toggle-switch.js") }}"></script>
         <script type="text/javascript" src="{{ asset("/js/form-components/input-select.js") }}"></script>
-        @if (Route::is(['profile','users.liste']))
-            <script type="text/javascript" src="{{asset('tabulator/js/tabulator.min.js')}}"></script>
-            <script type="text/javascript" src="{{asset('tabulator/js/profile.js')}}"></script>
-            <script type="text/javascript" src="{{asset('tabulator/js/utilisateur.js')}}"></script>
+        @if (Route::is(['profile','users.liste','personel.liste','reprise.cashonev4']))
+            <script type="text/javascript" src="{{asset('/tabulator/js/tabulator.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('/tabulator/js/profile.js')}}"></script>
+            <script type="text/javascript" src="{{asset('/tabulator/js/utilisateur.js')}}"></script>
+            <script type="text/javascript" src="{{asset('/tabulator/js/personnel.js')}}"></script>
+            <script type="text/javascript" src="{{asset('/tabulator/js/chainedb.js')}}"></script>
         @endif
         <script type="text/javascript" src="{{asset('Auth/js/sweetalert2.all.min.js')}}"></script>
         <script>
             const element = document.querySelector('.profiles');
             const choices = new Choices(element);
         </script>
-        
+
     </body>
 </html>

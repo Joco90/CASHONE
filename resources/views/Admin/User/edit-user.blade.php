@@ -35,12 +35,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="page-title-actions">
-                </div>
+                <div class="page-title-actions"></div>
+
             </div>
         </div>
         {{-- Zone d'alerte --}}
-        <div class="alert" role="alert"></div>
+        <div class="alert" role="alert">
+            @include('Partials._alerte')
+        </div>
 
         {{-- Fin zone d'alerte --}}
         {{-- Form to create users --}}
@@ -53,7 +55,7 @@
                         <div class="col-md-2">
                             <div class="position-relative mb-3">
                                 <label for="code" class="form-label">Code</label>
-                                <input name="code" id="code"
+                                <input name="code" id="code" readonly
                                     value="{{$users->code}}" type="text" class="form-control">
                                     <em id="codeerror"></em>
                             </div>
@@ -62,7 +64,8 @@
                             <div class="position-relative mb-3">
                                 <label for="matricule" class="form-label">Matricule</label>
                                 <input name="matricule" id="matricule"
-                                    type="text" value="{{$users->matricule}}" class="form-control">
+                                    type="text" value="{{$users->matricule}}" class="form-control" readonly>
+
                                     <em id="matriculeerror"></em>
                             </div>
 
@@ -130,7 +133,7 @@
                             <div class="position-relative mb-3">
                                 <label for="email" class="form-label">Addresse mail</label>
                                 <input name="email" id="email"
-                                    type="email" value="{{$users->email}}" class="form-control">
+                                    type="email" value="{{$users->email}}" class="form-control" disabled>
                                     <em id="emailerror"></em>
                             </div>
                         </div>
@@ -138,7 +141,7 @@
                             <div class="position-relative mb-3">
                                 <label for="telephone" class="form-label">Téléphone</label>
                                 <input name="telephone" id="telephone"
-                                    type="text" value="{{$users->telephone}}" class="form-control">
+                                    type="text" value="{{$users->telephone}}" class="form-control" readonly>
                                     <em id="telephoneerror"></em>
                             </div>
                         </div>
@@ -146,7 +149,7 @@
                             <div class="position-relative mb-3">
                                 <label for="mobile-user" class="form-label">Mobile</label>
                                 <input name="mobile" id="mobile"
-                                    type="text" value="{{$users->mobile}}" class="form-control">
+                                    type="text" value="{{$users->mobile}}" class="form-control" readonly>
                                     <em id="mobileerror"></em>
                             </div>
                         </div>
@@ -155,22 +158,29 @@
                     <div class="row">
                         <div class="col-md-2">
                             <div class="position-relative form-check">
-                                <input name="statut" id="etat" onclick="checkboxChange(this.id)" type="checkbox" class="form-check-input">
+                                @if ($users->statut==1)
+                                <input name="statut" id="etat"  type="checkbox" checked class="form-check-input">
+                                @else
+                                <input name="statut" id="etat"  type="checkbox" class="form-check-input">
+                                @endif
                                 <label for="etat" id="etat" class="form-label form-check-label">Etat</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="position-relative form-check">
-                                <input name="is_admin" id="adminfonct" onclick="checkboxChange(this.id)" type="checkbox" class="form-check-input">
+                                @if ($users->is_admin==1)
+                                <input name="is_admin" id="adminfonct" type="checkbox" checked class="form-check-input">
+                                @else
+                                <input name="is_admin" id="adminfonct" type="checkbox" class="form-check-input">
+                                @endif
                                 <label for="adminfonct" class="form-label form-check-label">Administrateur fonctionnel</label>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer clearfix">
-                        <button id="save-user" class="mb-2 me-2 btn-icon btn btn-primary btn-lg">
+                        <button id="update-user" class="mb-2 me-2 btn-icon btn btn-primary btn-lg">
                             Enregistrer
                         </button>
-                        <button id="app-user" class="btn btn-secondary btn-lg">Appliquer</button>
                         <div class="float-end">
                             <a href="{{route('users.liste')}}" class="btn btn-danger btn-lg">Annuler</a>
 

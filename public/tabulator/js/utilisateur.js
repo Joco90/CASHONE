@@ -41,13 +41,13 @@ var tableUser = new Tabulator("#user-table", {
 function formatterbtn(cel){
     let value=cel.getValue();
 
-    return `<a href="gestion-des-utilisateurs/del-user/${value}" class="btn btn-danger btn-sm" title="Supprimer">
+    return `<a href="/gestion-des-utilisateurs/del-user/${value}" class="btn btn-danger btn-sm" title="Supprimer">
     <i class="pe-7s-trash btn-icon-wrapper"></i>
     </a>
-    <a href="gestion-des-utilisateurs/edit-user/${value}" class="btn btn-secondary btn-sm" title="Modifier">
+    <a href="/gestion-des-utilisateurs/edit-user/${value}" class="btn btn-secondary btn-sm" title="Modifier">
     <i class="pe-7s-pen btn-icon-wrapper"></i>
     </a>
-    <a href="gestion-des-utilisateurs/details-user/${value}" class="btn btn-info btn-sm" title="Etat">
+    <a href="/gestion-des-utilisateurs/details-user/${value}" class="btn btn-info btn-sm" title="Etat">
     <i class="pe-7s-menu btn-icon-wrapper"></i>
     </a>`;
 }

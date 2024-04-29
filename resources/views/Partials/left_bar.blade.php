@@ -116,6 +116,12 @@
                                       Paramétrage
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="{{route('reprise.cashonev4')}}">
+                                        <i class="pe-7s-plus"></i>
+                                      Chaine de reprise
+                                    </a>
+                                </li>
 
                             </ul>
                         </li>
@@ -304,6 +310,12 @@
                             </a>
                         </li>
                         <li>
+                            <a href="{{route('typeContrat.liste')}}">
+                                <i class="pe-7s-plus"></i>
+                                Types de contrat
+                            </a>
+                        </li>
+                        <li>
                             <a href="">
                                 <i class="pe-7s-plus"></i>
                                 Types de dossiers
@@ -325,13 +337,13 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="">
+                            <a href="{{route('personel.liste')}}">
                                 <i class="pe-7s-plus"></i>
                                 Ajouter
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="{{route('importation.personel')}}">
                                 <i class="pe-7s-download"></i>
                                 Importer
                             </a>
@@ -497,7 +509,7 @@
                                 </li>
                             </ul>
                         </li>
-                        
+
                     </ul>
                 </li>
                 <li class="app-sidebar__heading">Règlements</li>

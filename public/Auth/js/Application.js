@@ -309,3 +309,10 @@ function checkboxChange(id){
     }
     console.log(statut.value);
 }
+
+
+// Importation de personnel via une source de donées
+$("#formImpoter").submit(function(e){
+
+   
+});
